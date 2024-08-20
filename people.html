@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>People - Quantitative Translation Research Laboratory</title>
+    <title>People - Quantitative and Empirical Translation Research Laboratory</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -13,26 +13,24 @@
             background-color: #f4f4f4;
             color: #333;
         }
+
         .container-wrapper {
             max-width: 90%;
             margin: 0 auto;
         }
+
         header img {
             width: 100%;
             height: auto;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .person .profile-pic {
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-        }
-        /* Existing CSS */
+
         nav {
             background-color: #004d99;
             padding: 10px 0;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         nav a {
             color: white;
             padding: 10px 20px;
@@ -41,9 +39,11 @@
             font-size: 1.2em;
             display: inline-block;
         }
+
         nav a:hover {
             background-color: #003366;
         }
+
         .content {
             padding: 40px;
             margin: 20px auto;
@@ -55,24 +55,48 @@
             background-color: #f9f9f9;
             border-radius: 8px;
         }
-        h1, h2 {
+
+        .person {
+            margin-bottom: 40px;
+        }
+
+        .person img {
+            width: 150px;
+            height: auto;
+            float: left;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .person h2 {
             color: #004d99;
-            margin-bottom: 20px;
+            margin-top: 0;
         }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
+
+        .contact-info {
+            margin-top: 10px;
         }
-        ul li {
-            margin-bottom: 10px;
+
+        .contact-info p {
+            margin: 5px 0;
         }
-        a.resource-link {
-            color: #004d99;
+
+        .contact-info a.download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #004d99;
+            color: white;
             text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
-        a.resource-link:hover {
-            text-decoration: underline;
+
+        .contact-info a.download-link:hover {
+            background-color: #003366;
         }
+
         footer {
             background-color: #333;
             color: white;
@@ -84,10 +108,12 @@
     </style>
 </head>
 <body>
+
     <div class="container-wrapper">
         <header>
             <img src="image/banner.jpg" alt="Banner Image">
         </header>
+
         <nav>
             <a href="index.html">Home</a>
             <a href="people.html">People</a>
@@ -95,9 +121,10 @@
             <a href="publications.html">Publications</a>
             <a href="corpus-resources.html">Corpus Resources</a>
         </nav>
+
         <div class="content">
             <div class="person">
-                <img src="image/kanglong.jpg" alt="Kanglong Liu" class="profile-pic">
+                <img src="image/kanglong.jpg" alt="Dr Liu Kanglong">
                 <h2>Dr Liu Kanglong</h2>
                 <div class="contact-info">
                     <p><strong>Location:</strong> AG518d</p>
@@ -107,13 +134,16 @@
                 </div>
             </div>
         </div>
+
         <footer>
-            <p>&copy; 2024 Quantitative Translation Research Laboratory, The Hong Kong Polytechnic University</p>
+            <p>&copy; 2024 Quantitative and Empirical Translation Research Laboratory, The Hong Kong Polytechnic University</p>
         </footer>
     </div>
+
     <!-- Javascript files -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
