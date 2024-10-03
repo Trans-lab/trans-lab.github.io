@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey on MScGAH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 70%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            font-size: 1.4em;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .question-group {
+            margin-top: 20px;
+        }
+
+        .question-group label {
+            margin-bottom: 10px;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .container p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Survey on Master of Science in Generative AI and the Humanities (MScGAH)</h1>
+
+    <p>Dear Student,</p>
+    <p>We invite you to take this survey to share your feedback about your learning experience in the MScGAH programme. The survey will only take 5-10 minutes. Your feedback will help us improve our programmes to better meet student needs and achieve important learning outcomes. All data will be kept confidential and no individual student will be identified through their responses.</p>
+    <p>Thank you for taking the time to provide us with valuable feedback about your studies at PolyU. Let's get started!</p>
+
+    <form action="/submit-survey" method="POST">
+        <p class="center-text"><strong>* Required</strong></p>
+
+        <div class="question-group">
+            <label>1. What specialism are you studying? *</label>
+            <input type="checkbox" name="specialism" value="Language and Communication (Full-time)"> Language and Communication (Full-time) <br>
+            <input type="checkbox" name="specialism" value="Language and Communication (Part-time)"> Language and Communication (Part-time) <br>
+            <input type="checkbox" name="specialism" value="Arts and Culture (Full-time)"> Arts and Culture (Full-time) <br>
+            <input type="checkbox" name="specialism" value="Arts and Culture (Part-time)"> Arts and Culture (Part-time) <br>
+        </div>
+
+<h2 class="section-title">2. Programme/Course Organization and Learning Outcomes</h2>
+<p class="center-text">To what extent do you agree with the following statements about programme organization and learning outcomes of the MScGAH programme?</p>
+
+
+<div class="question-group">
+    <label>The programme meets my expectations</label><br>
+    <input type="radio" name="expectations" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="expectations" value="Agree"> Agree <br>
+    <input type="radio" name="expectations" value="Neutral"> Neutral <br>
+    <input type="radio" name="expectations" value="Disagree"> Disagree <br>
+    <input type="radio" name="expectations" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The programme’s content is relevant and engaging</label><br>
+    <input type="radio" name="content" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="content" value="Agree"> Agree <br>
+    <input type="radio" name="content" value="Neutral"> Neutral <br>
+    <input type="radio" name="content" value="Disagree"> Disagree <br>
+    <input type="radio" name="content" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The programme has achieved its learning goals</label><br>
+    <input type="radio" name="learning_goals" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="learning_goals" value="Agree"> Agree <br>
+    <input type="radio" name="learning_goals" value="Neutral"> Neutral <br>
+    <input type="radio" name="learning_goals" value="Disagree"> Disagree <br>
+    <input type="radio" name="learning_goals" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The programme provides adequate support and resources</label><br>
+    <input type="radio" name="support" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="support" value="Agree"> Agree <br>
+    <input type="radio" name="support" value="Neutral"> Neutral <br>
+    <input type="radio" name="support" value="Disagree"> Disagree <br>
+    <input type="radio" name="support" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+
+
+<h2 class="section-title">3. Lecturing</h2>
+<p class="center-text">How satisfied are you with the following aspects about the lecturing in the MScGAH programme?</p>
+
+<div class="question-group">
+    <label>Design of learning materials and activities</label><br>
+    <input type="radio" name="materials" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="materials" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="materials" value="Neutral"> Neutral <br>
+    <input type="radio" name="materials" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="materials" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Effectiveness of delivery (e.g. lecturers’ presentations are clear, precise, and well organised)</label><br>
+    <input type="radio" name="delivery" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="delivery" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="delivery" value="Neutral"> Neutral <br>
+    <input type="radio" name="delivery" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="delivery" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>The quality of classrooms and lecture theatres</label><br>
+    <input type="radio" name="classrooms" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="classrooms" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="classrooms" value="Neutral"> Neutral <br>
+    <input type="radio" name="classrooms" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="classrooms" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>The learning spaces for learning activities before or after classes (e.g. discuss assignments, work on team projects, review notes, etc.)</label><br>
+    <input type="radio" name="learning_spaces" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="learning_spaces" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="learning_spaces" value="Neutral"> Neutral <br>
+    <input type="radio" name="learning_spaces" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="learning_spaces" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+
+
+<h2 class="section-title">4. Communication</h2>
+<p class="center-text">How satisfied are you with the following aspects about the communication between instructors and students in the MScGAH programme?</p>
+
+<div class="question-group">
+    <label>The attitude of teaching staff</label><br>
+    <input type="radio" name="attitude" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="attitude" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="attitude" value="Neutral"> Neutral <br>
+    <input type="radio" name="attitude" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="attitude" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>The expertise of teaching staff</label><br>
+    <input type="radio" name="expertise" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="expertise" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="expertise" value="Neutral"> Neutral <br>
+    <input type="radio" name="expertise" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="expertise" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Ease of access to instructors for guidance</label><br>
+    <input type="radio" name="access" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="access" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="access" value="Neutral"> Neutral <br>
+    <input type="radio" name="access" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="access" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Interactions with teachers</label><br>
+    <input type="radio" name="interactions" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="interactions" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="interactions" value="Neutral"> Neutral <br>
+    <input type="radio" name="interactions" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="interactions" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+
+<h2 class="section-title">5. Assessment</h2>
+<p class="center-text">To what extent are you satisfied with the following aspects of the assessment in the MScGAH programme? *</p>
+
+<div class="question-group">
+    <label>Appropriateness of assessment criteria</label><br>
+    <input type="radio" name="assessment_criteria" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="assessment_criteria" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="assessment_criteria" value="Neutral"> Neutral <br>
+    <input type="radio" name="assessment_criteria" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="assessment_criteria" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Quality of teacher feedback</label><br>
+    <input type="radio" name="teacher_feedback" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="teacher_feedback" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="teacher_feedback" value="Neutral"> Neutral <br>
+    <input type="radio" name="teacher_feedback" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="teacher_feedback" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Variety of assessment methods</label><br>
+    <input type="radio" name="assessment_methods" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="assessment_methods" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="assessment_methods" value="Neutral"> Neutral <br>
+    <input type="radio" name="assessment_methods" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="assessment_methods" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<div class="question-group">
+    <label>Fairness of grading</label><br>
+    <input type="radio" name="grading" value="Very satisfied"> Very satisfied <br>
+    <input type="radio" name="grading" value="Satisfied"> Satisfied <br>
+    <input type="radio" name="grading" value="Neutral"> Neutral <br>
+    <input type="radio" name="grading" value="Dissatisfied"> Dissatisfied <br>
+    <input type="radio" name="grading" value="Very dissatisfied"> Very dissatisfied <br>
+</div>
+
+<h2 class="section-title">6. Learning Support</h2>
+<p class="center-text">To what extent do you agree with the following statements about the learning support of the MScGAH programme? *</p>
+
+<div class="question-group">
+    <label>The online learning materials and videos are up-to-date and sufficient</label><br>
+    <input type="radio" name="online_materials" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="online_materials" value="Agree"> Agree <br>
+    <input type="radio" name="online_materials" value="Neutral"> Neutral <br>
+    <input type="radio" name="online_materials" value="Disagree"> Disagree <br>
+    <input type="radio" name="online_materials" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>I am adequately supported to complete my academic studies</label><br>
+    <input type="radio" name="adequate_support" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="adequate_support" value="Agree"> Agree <br>
+    <input type="radio" name="adequate_support" value="Neutral"> Neutral <br>
+    <input type="radio" name="adequate_support" value="Disagree"> Disagree <br>
+    <input type="radio" name="adequate_support" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>I am aware of the student support services available to me</label><br>
+    <input type="radio" name="support_services" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="support_services" value="Agree"> Agree <br>
+    <input type="radio" name="support_services" value="Neutral"> Neutral <br>
+    <input type="radio" name="support_services" value="Disagree"> Disagree <br>
+    <input type="radio" name="support_services" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The programme adequately prepares me for future opportunities</label><br>
+    <input type="radio" name="future_opportunities" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="future_opportunities" value="Agree"> Agree <br>
+    <input type="radio" name="future_opportunities" value="Neutral"> Neutral <br>
+    <input type="radio" name="future_opportunities" value="Disagree"> Disagree <br>
+    <input type="radio" name="future_opportunities" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<h2 class="section-title">7. Course Difficulty</h2>
+<p class="center-text">To what extent do you agree with the following statements about the course difficulty in the MScGAH programme? *</p>
+
+<div class="question-group">
+    <label>The study workload was manageable</label><br>
+    <input type="radio" name="workload" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="workload" value="Agree"> Agree <br>
+    <input type="radio" name="workload" value="Neutral"> Neutral <br>
+    <input type="radio" name="workload" value="Disagree"> Disagree <br>
+    <input type="radio" name="workload" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The overall difficulty of course contents is appropriate</label><br>
+    <input type="radio" name="difficulty" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="difficulty" value="Agree"> Agree <br>
+    <input type="radio" name="difficulty" value="Neutral"> Neutral <br>
+    <input type="radio" name="difficulty" value="Disagree"> Disagree <br>
+    <input type="radio" name="difficulty" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>The learning resources can adequately support to handle the courses' difficulty</label><br>
+    <input type="radio" name="learning_resources" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="learning_resources" value="Agree"> Agree <br>
+    <input type="radio" name="learning_resources" value="Neutral"> Neutral <br>
+    <input type="radio" name="learning_resources" value="Disagree"> Disagree <br>
+    <input type="radio" name="learning_resources" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<div class="question-group">
+    <label>Assessments fairly reflect the difficulty level of the course content</label><br>
+    <input type="radio" name="assessment_difficulty" value="Strongly agree"> Strongly agree <br>
+    <input type="radio" name="assessment_difficulty" value="Agree"> Agree <br>
+    <input type="radio" name="assessment_difficulty" value="Neutral"> Neutral <br>
+    <input type="radio" name="assessment_difficulty" value="Disagree"> Disagree <br>
+    <input type="radio" name="assessment_difficulty" value="Strongly disagree"> Strongly disagree <br>
+</div>
+
+<h2 class="section-title">8. Dissertation & Capstone Project</h2>
+<p class="center-text">Do you intend to do a dissertation or a capstone project? *</p>
+
+<div class="question-group">
+    <input type="radio" name="dissertation_capstone" value="Dissertation"> Yes, the dissertation <br>
+    <input type="radio" name="dissertation_capstone" value="Capstone"> Yes, the capstone project <br>
+    <input type="radio" name="dissertation_capstone" value="No"> No <br>
+</div>
+
+
+<h2 class="section-title">9. Overall Comments</h2>
+
+<div class="question-group">
+    <label>Would you recommend the MScGAH programme to others? *</label><br>
+    <input type="radio" name="recommend_programme" value="Yes"> Yes <br>
+    <input type="radio" name="recommend_programme" value="No"> No <br>
+    <input type="radio" name="recommend_programme" value="Not sure"> Not sure <br>
+</div>
+
+<div class="question-group">
+    <label>Would you do another programme at PolyU? *</label><br>
+    <input type="radio" name="another_programme" value="Yes"> Yes <br>
+    <input type="radio" name="another_programme" value="No"> No <br>
+    <input type="radio" name="another_programme" value="Not sure"> Not sure <br>
+</div>
+
+<div class="question-group">
+    <label>What aspects of the programme do you find most valuable?</label><br>
+    <textarea name="valuable_aspects" rows="4" cols="50"></textarea>
+</div>
+
+<div class="question-group">
+    <label>What aspects of the programme do you think need improvement?</label><br>
+    <textarea name="improvement_aspects" rows="4" cols="50"></textarea>
+</div>
+
+<div class="question-group">
+    <label>Are there any specific courses or topics you would like to see added to the programme?</label><br>
+    <textarea name="additional_courses" rows="4" cols="50"></textarea>
+</div>
+
+<div class="question-group">
+    <label>Any additional comments or suggestions for improving the programme?</label><br>
+    <textarea name="additional_comments" rows="4" cols="50"></textarea>
+</div>
+
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
