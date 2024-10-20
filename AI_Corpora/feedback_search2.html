@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Corpora Feedback Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, h1, h2, h3, p, textarea, input[type="text"] {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            color: #333;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+        }
+        #main {
+            width: 60%;
+            padding: 20px;
+            background: white;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #right-panel {
+            width: 30%;
+            padding: 20px;
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        #left-panel {
+            width: 10%;
+            background: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        #navigation {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        #navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #444;
+            border-radius: 4px;
+            text-align: center;
+        }
+        #navigation a:hover {
+            background-color: #555;
+        }
+        #navigation a.active {
+            background-color: #4a90e2;
+        }
+        .section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        .tab {
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: #357ab8;
+        }
+        .results-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .result {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .dropdown-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .dropdown-container select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        #aiResponse {
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            height: 150px;
+            overflow-y: auto;
+            background-color: #ffffff;
+        }
+        .prompt-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .prompt-suggestion-button {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .prompt-suggestion-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.02);
+        }
+        .section-input {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #aiInput {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI-Corpora Feedback Search</h1>
+    </header>
+    <div id="container">
+        <div id="left-panel">
+            <div id="navigation">
+                <a href="search.html">Search</a>
+                <a href="translation.html">Translate</a>
+                <a href="feedback.html" class="active">Feedback</a>
+                <a href="polish.html">Polish</a>
+                <a href="memory.html">Memory</a>
+            </div>
+        </div>
+        <main id="main">
+            <h2>Feedback Details</h2>
+            <div class="dropdown-container">
+                <select aria-label="Select part of speech">
+                    <option>词性</option>
+                    <option>名词</option>
+                    <option>动词</option>
+                    <option>形容词</option>
+                    <option>副词</option>
+                    <option>代词</option>
+                    <option>介词</option>
+                    <option>全部</option>
+                </select>
+                <select aria-label="Select number of lines">
+                    <option>行数</option>
+                    <option>20行</option>
+                    <option>50行</option>
+                    <option>全部</option>
+                </select>
+                <select aria-label="Select genre">
+                    <option>文体</option>
+                    <option>财务文本</option>
+                    <option>新闻文本</option>
+                    <option>法律文件</option>
+                    <option>公司简介</option>
+                    <option>主席报告书(香港)</option>
+                    <option>主席报告书(大陆)</option>
+                    <option>特写</option>
+                    <option>全部</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Translation</th>
+                        <th>Frequency</th>
+                        <th>Genre</th>
+                        <th>Example</th>
+                        <th>Source text</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>出轨</td>
+                        <td>16</td>
+                        <td>新闻文本</td>
+                        <td>天生自带出轨基因。</td>
+                        <td>They are genetically programmed to cheat.</td>
+                    </tr>
+                    <tr>
+                        <td>撒谎</td>
+                        <td>10</td>
+                        <td>新闻文本</td>
+                        <td>狗狗从不撒谎。</td>
+                        <td>Dogs Never Cheat.</td>
+                    </tr>
+                    <tr>
+                        <td>欺骗</td>
+                        <td>8</td>
+                        <td>新闻文本</td>
+                        <td>瑞士人是诚实的，不会欺骗顾客。</td>
+                        <td>Swiss are honest and won’t cheat their customers.</td>
+                    </tr>
+                    <tr>
+                        <td>作弊</td>
+                        <td>3</td>
+                        <td>新闻文本</td>
+                        <td>另外，有些人指出，实际上这种方法会方便学生作弊。</td>
+                        <td>On the other hand, some people pointed out that the newspapers would actually make it easier for the students to cheat.</td>
+                                        </tr>
+                </tbody>
+            </table>
+        </main>
+        <aside id="right-panel">
+            <div class="section">
+                <h2>AI Feedback</h2>
+                <textarea id="aiResponse" readonly>AI's feedback will be displayed here.</textarea>
+            </div>
+            <div class="section section-input">
+                <textarea id="aiInput" aria-label="Enter your question for AI" placeholder="Write your prompt..." style="height: 80px;"></textarea>
+                <button class="button" onclick="askAI()" aria-label="Send prompt to AI">Send</button>
+            </div>
+            <div class="prompt-suggestions">
+                <button class="prompt-suggestion-button">Pay attention that it is a travel article</button>
+                <button class="prompt-suggestion-button">Give me more appropriate words</button>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function askAI() {
+            const aiInput = document.getElementById('aiInput').value;
+            if (!aiInput) {
+                alert('Please enter a question for the AI.');
+                return;
+            }
+            // Simulating an AI response
+            document.getElementById('aiResponse').value = `You asked: "${aiInput}". \nAI says: This is a simulated response.`;
+        }
+    </script>
+</body>
+
+</html>

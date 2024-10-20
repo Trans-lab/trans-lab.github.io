@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Corpora Feedback Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, h1, h2, h3, p, textarea, input[type="text"] {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            color: #333;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+        }
+        #main {
+            width: 60%;
+            padding: 20px;
+            background: white;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #right-panel {
+            width: 30%;
+            padding: 20px;
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        #left-panel {
+            width: 10%;
+            background: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        #navigation {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        #navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #444;
+            border-radius: 4px;
+            text-align: center;
+        }
+        #navigation a:hover {
+            background-color: #555;
+        }
+        #navigation a.active {
+            background-color: #4a90e2;
+        }
+        .section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        .tab {
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: #357ab8;
+        }
+        .results-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .result {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .dropdown-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .dropdown-container select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        #aiResponse {
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            height: 150px;
+            overflow-y: auto;
+            background-color: #ffffff;
+        }
+        .prompt-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .prompt-suggestion-button {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .prompt-suggestion-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.02);
+        }
+        .section-input {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #aiInput {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI-Corpora Translate</h1>
+    </header>
+    <div id="container">
+        <div id="left-panel">
+            <div id="navigation">
+                <a href="search.html">Search</a>
+                <a href="translation.html" class="active">Translate</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="polish.html">Polish</a>
+                <a href="memory.html">Memory</a>
+            </div>
+        </div>
+       <div id="main">
+            <div class="section">
+                <h1>Original Text:</h1>
+                <input type="text" id="originalTextInput" value="He was cheated by the money people who have the Democratic Party as their instrument of power."style="font-size: 20px;">
+                <h1>Provided Translation:</h1>
+                <input type="text" id="originalTextInput" value="他被那些以民主党为权力工具的有钱人欺骗了."style="font-size: 20px;">
+            </div>
+            <div class="tabs">
+                <div class="tab active" onclick="filterResults('democratic')">Democratic</div>
+                <div class="tab" onclick="filterResults('party')">Party</div>
+                <div class="tab" onclick="filterResults('instrument')">Instrument</div>
+                <div class="tab" onclick="showAllResults()">All</div>
+            </div>
+            <div class="results-container" id="resultsContainer">
+                <div class="result" data-keywords="democratic">
+                    <p>A democratic anniversary gets festive.</p>
+                    <p>民主建国庆典带来喜庆氛围。</p>
+                </div>
+                <div class="result" data-keywords="party">
+                    <p>Which party is expected to win?</p>
+                    <p>哪个政党有望获胜?</p>
+                </div>
+                <div class="result" data-keywords="instrument">
+                    <p>She then throws the instrument onto the ground and storms off.</p>
+                    <p>然后她扔掉了乐器，气冲冲地离开了。</p>
+                </div>
+                <div class="result" data-keywords="power">
+                    <p>But formal sovereignty is not power.</p>
+                    <p>但正式主权并非决定力量。</p>
+                </div>
+            </div>
+        </div>
+<div id="right-panel">
+    <h3>Source Text</h3>
+    <textarea id="sourceText" placeholder="Write source text here..." style="height: 300px; width: 100%;"></textarea>
+    <h3>Your Translation</h3>
+    <textarea id="studentTranslation" placeholder="Write your translation here..." style="height: 300px; width: 100%;"></textarea>
+    <button class="button" onclick="submitTranslation()">Submit Translation</button>
+    <h3>AI-Generated Translation</h3>
+    <textarea id="aiTranslation" readonly placeholder="AI-generated translation will appear here..." style="height: 300px; width: 100%;"></textarea>
+</div>
+
+    </div>
+
+    <script>
+        async function submitTranslation() {
+            const sourceText = document.getElementById('sourceText').value;
+
+            if (!sourceText) {
+                alert('Please enter some text to translate.');
+                return;
+            }
+
+            // Simulate loading
+            document.getElementById('aiTranslation').value = 'Generating translation...';
+
+            try {
+                const response = await fetch('/getTranslation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: sourceText })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                document.getElementById('aiTranslation').value = data.translation;
+            } catch (error) {
+                document.getElementById('aiTranslation').value = 'Error generating translation: ' + error.message;
+            }
+        }
+
+        function filterResults(keyword) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="filterResults('${keyword}')"]`).classList.add('active');
+
+            const results = document.querySelectorAll('.result');
+            results.forEach(result => {
+                if (result.dataset.keywords.includes(keyword)) {
+                    result.style.display = 'block';
+                } else {
+                    result.style.display = 'none';
+                }
+            });
+        }
+        function showAllResults() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector('.tab[onclick="showAllResults()"]').classList.add('active');
+
+            const results = document.querySelectorAll('.result');
+            results.forEach(result => {
+                result.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Corpora Feedback Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, h1, h2, h3, p, textarea, input[type="text"] {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            color: #333;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+        }
+        #main {
+            width: 60%;
+            padding: 20px;
+            background: white;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #right-panel {
+            width: 30%;
+            padding: 20px;
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        #left-panel {
+            width: 10%;
+            background: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        #navigation {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        #navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #444;
+            border-radius: 4px;
+            text-align: center;
+        }
+        #navigation a:hover {
+            background-color: #555;
+        }
+        #navigation a.active {
+            background-color: #4a90e2;
+        }
+        .section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        .tab {
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: #357ab8;
+        }
+        .results-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .result {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .dropdown-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .dropdown-container select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        #aiResponse {
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            height: 150px;
+            overflow-y: auto;
+            background-color: #ffffff;
+        }
+        .prompt-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .prompt-suggestion-button {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .prompt-suggestion-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.02);
+        }
+        .section-input {
+            margin-top: 15px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #aiInput {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI-Corpora Memory</h1>
+    </header>
+    <div id="container">
+        <div id="left-panel">
+            <div id="navigation">
+                <a href="search.html">Search</a>
+                <a href="translation.html">Translate</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="polish.html">Polish</a>
+                <a href="memory.html" class="active">Memory</a>
+            </div>
+        </div>
+        <div id="main">
+            <div class="section">
+                <h2>Translation Memory</h2>
+                <div class="result">
+                    <p id="keyword-工具">He was cheated by the money people who have the Democratic Party as their instrument of power.</p>
+                    <p>他被那些使用民主党作为金融工具的银行家们多收了钱。</p>
+                    <br>
+                    <p>Accuracy: <span class="highlight" title="'工具' is contextually more suitable than '仪器'">工具</span> is more appropriate than <span class="highlight" title="The term '仪器' does not fit well in this context">仪器</span>.</p>
+                    <p>Accuracy: <span class="highlight" title="The original meaning involves deception, not an overcharge">多收了钱</span> should be revised to <span class="highlight" title="Use '被欺骗' to accurately reflect the context of being deceived">被欺骗</span>.</p>
+                </div>
+                <div class="result">
+                    <p id="keyword-幻灭">Feeling betrayed and disillusioned, he began to question not only the motives behind their policies but also his own beliefs in the political system.</p>
+                    <p>感到困惑和幻灭，他开始质疑他们政策背后的动机，甚至质疑自己对政治系统的信念。</p>
+                    <br>
+                    <p>Accuracy: <span class="highlight" title="'幻灭' is a more accurate translation for 'disillusioned'">幻灭</span> is better than <span class="highlight" title="'迷失' does not fully capture the meaning of 'disillusioned'">迷失</span>.</p>
+                    <p>Accuracy: <span class="highlight" title="'动机' is more suitable for translating 'motives' in this context">动机</span> is more suitable than <span class="highlight">目标</span>.</p>
+                </div>
+            </div>
+        </div>
+        <div id="right-panel">
+            <div class="section">
+                <h2>Highlighted Keywords</h2>
+                <ul>
+                    <li><a href="#keyword-工具" style="text-decoration: none; color: green;">工具</a></li>
+                    <li><a href="#keyword-幻灭" style="text-decoration: none; color: green;">幻灭</a></li>
+                    <li><a href="#keyword-动机" style="text-decoration: none; color: green;">动机</a></li>
+                    <li><a href="#keyword-被欺骗" style="text-decoration: none; color: green;">被欺骗</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
