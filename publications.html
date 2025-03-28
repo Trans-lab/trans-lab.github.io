@@ -5,87 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications - Quantitative Translation Research Laboratory</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+   <style>
+    /* Global Settings */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
 
-        .container-wrapper {
-            max-width: 90%;
-            margin: 0 auto;
-        }
+    .container-wrapper {
+        max-width: 90%;
+        margin: 0 auto;
+    }
 
-        header img {
-            width: 100%;
-            height: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    /* Header Banner */
+    header img {
+        width: 100%;
+        height: auto;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        nav {
-            background-color: #004d99;
-            padding: 10px 0;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* Navigation */
+    nav {
+        background-color: #004d99;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+        color: #ffffff;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1em;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+        background-color: #003366;
+    }
+
+    /* Main Content */
+    .content {
+        padding: 40px 30px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
+        font-size: 1.05em;
+        line-height: 1.7;
+    }
+
+    h1, h2 {
+        color: #004d99;
+        margin-bottom: 20px;
+    }
+
+    .publication-section {
+        margin-bottom: 50px;
+    }
+
+    /* Year Labels */
+    .year-heading {
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 40px 0 20px;
+        padding-left: 14px;
+        border-left: 6px solid #004d99;
+        background-color: #e9f2fc;
+        border-radius: 4px;
+    }
+
+    /* Publication Items */
+    .publication-item {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed #ccc;
+    }
+
+    .publication-item p {
+        margin: 5px 0;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #004d99;
+    }
+
+    .download-link {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 0.95em;
+        color: #0066cc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .download-link:hover {
+        color: #003366;
+        text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 0.95em;
+        margin-top: 40px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+        .content {
+            padding: 25px 20px;
         }
 
         nav a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            display: inline-block;
+            font-size: 1em;
+            padding: 10px 15px;
         }
 
-        nav a:hover {
-            background-color: #003366;
+        .year-heading {
+            font-size: 1.3em;
+            padding-left: 10px;
         }
-
-        .content {
-            padding: 40px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: left;
-            line-height: 1.6;
-            font-size: 1.1em;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        h1, h2 {
-            color: #004d99;
-            margin-bottom: 20px;
-        }
-
-        .publication-section {
-            margin-bottom: 40px;
-        }
-
-        .publication-item {
-            margin-bottom: 20px;
-        }
-
-        .publication-item p {
-            margin: 5px 0;
-        }
-
-        .highlight {
-            font-weight: bold;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
@@ -107,7 +159,8 @@
 
             <div class="publication-section">
                 <h2>Journal Papers</h2>
-<div class="publication-item">
+<div class="year-heading">2025</div>
+                <div class="publication-item">
     <p>Su, Z., Xu, H., & <span class="highlight">Liu, K*</span>. (2025). Linguistic compression and cognitive load: A quantitative study of the Menzerath–Altmann Law in interpreted, L2 and native English speech. <em>Journal of Quantitative Linguistics</em>, 1–28.</p>
     <a href="file/linguistic_compression_cognitive_load.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
@@ -146,6 +199,8 @@
     <p><span class="highlight">Liu, K*</span>, Xiao, W., & <span class="highlight">Liu, K*</span>. (2025). Analyzing research trends in localization: A comparative systematic review of journal articles in English and Chinese (2012–2023). <em>Digital Translation: International Journal of Translation and Localization</em>, 11(2), 91–115. <a href="https://doi.org/10.1075/dt.23009.liu" target="_blank">DOI:10.1075/dt.23009.liu</a></p>
     <a href="file/localization_trends_review.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
+                
+<div class="year-heading">2024</div>     
                 
 <div class="publication-item">
     <p>Wang, Z., Xu, H., & <span class="highlight">Liu, K.</span> (2024). Lexical complexity in corporate communication: A corpus-based study of translated and non-translated chairman’s statements. <em>Corpus-based Studies across Humanities</em>. Advance online publication. <a href="https://doi.org/10.1515/csh-2024-0026" target="_blank">DOI:10.1515/csh-2024-0026</a></p>
@@ -222,6 +277,8 @@
     <a href="file/style_in_speech.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
 
+<div class="year-heading">2023</div>
+                
 <div class="publication-item">
     <p>Kwok, H. L., Laviosa, S., & <span class="highlight">Liu, K.</span>* (2023). Lexical simplification in learner translation: A corpus-based approach. <em>Research in Corpus Linguistics</em>, 11(2), 103-124. <a href="https://doi.org/10.32714/ricl.11.02.06" target="_blank">DOI:10.32714/ricl.11.02.06</a></p>
     <a href="file/lexical_simplification.pdf" class="download-link" target="_blank">Download PDF</a>
@@ -267,6 +324,8 @@
     <a href="file/syntactic_complexity_corpora.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
 
+<div class="year-heading">2022</div>
+                
 <div class="publication-item">
     <p><span class="highlight">Liu, K.</span>*, Cheung, J. O., & Zhao, N. (2022). Learner corpus research in Hong Kong: past, present, and future. <em>Corpora</em>, 17(Supplement), 79-97. <a href="https://doi.org/10.3366/cor.2022.0248" target="_blank">DOI:10.3366/cor.2022.0248</a></p>
     <a href="file/learner_corpus_research.pdf" class="download-link" target="_blank">Download PDF</a>
@@ -292,6 +351,8 @@
     <a href="file/entropy_discrimination.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
 
+<div class="year-heading">2021</div>
+                
 <div class="publication-item">
     <p>Chou, I., <span class="highlight">Liu, K.</span>, & Zhao, N. (2021). Effects of directionality on interpreting performance: Evidence from interpreting between Chinese and English by trainee interpreters. <em>Frontiers in Psychology</em>, 12, 781610. <a href="https://doi.org/10.3389/fpsyg.2021.781610" target="_blank">DOI:10.3389/fpsyg.2021.781610</a></p>
     <a href="file/effects_of_directionality.pdf" class="download-link" target="_blank">Download PDF</a>
@@ -326,7 +387,9 @@
     <p>Zhou, J., <span class="highlight">Liu, K.</span>, & Chu, J. (2021). 学生译员英汉交替传译中的欧化现象及其认知成因: 基于语料库的研究 (Europeanization and its cognitive triggers in English-Chinese consecutive interpreting of novice interpreters: A corpus-based study). <em>西安外国语大学学报 (Journal of Xi’an International Studies University)</em>, 29(4), 97-101.</p>
     <a href="file/europeanization_cognitive_triggers.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
-
+                
+<div class="year-heading">2020</div>
+                
 <div class="publication-item">
     <p><span class="highlight">Liu, K.</span>, & Cheung, J. O. (2020). Multi-word expressions in Hongloumeng translations: a corpus-assisted structural and functional analysis. <em>Translation Quarterly</em>, 98, 79-101.</p>
     <a href="file/multi_word_expressions.pdf" class="download-link" target="_blank">Download PDF</a>
@@ -346,7 +409,9 @@
     <p>Akhtar, A., <span class="highlight">Liu, K.</span>, Tahira, J., & Afzaal, M. (2020). Tweaking harassment through tweets: a critical discourse study of MeToo. <em>International Journal of English Linguistics</em>, 10(1), 157-165.</p>
     <a href="file/tweaking_harassment.pdf" class="download-link" target="_blank">Download PDF</a>
 </div>
-
+                
+<div class="year-heading">Before 2020</div>
+                
 <div class="publication-item">
     <p>Jin, T., <span class="highlight">Liu, K.</span>, & Wu, J. (2019). 学术英语教材词表的研制范式与实践应用 (Compilation of word lists for academic English textbooks: Norms and applications) [in Chinese]. <em>Foreign Language World (外语界)</em>, 5, 21-29.</p>
     <a href="file/word_lists_academic_textbooks.pdf" class="download-link" target="_blank">Download PDF</a>
