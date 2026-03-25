@@ -310,8 +310,6 @@
             }
         }
     </style>
-    <!-- Language Switcher -->
-    <script src="js/language-switcher.js"></script>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -324,11 +322,11 @@
             
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
-                    <li><a href="people.html" class="nav-link" data-i18n="nav.people">People</a></li>
-                    <li><a href="grants.html" class="nav-link" data-i18n="nav.grants">Grants</a></li>
-                    <li><a href="publications.html" class="nav-link active" data-i18n="nav.publications">Publications</a></li>
-                    <li><a href="corpus-resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="people.html" class="nav-link">People</a></li>
+                    <li><a href="grants.html" class="nav-link">Grants</a></li>
+                    <li><a href="publications.html" class="nav-link active">Publications</a></li>
+                    <li><a href="corpus-resources.html" class="nav-link">Resources</a></li>
                 </ul>
             </nav>
         </div>
@@ -371,7 +369,7 @@
         <div class="search-filter-bar animate-fade-in-up">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search by title, author, or keyword..." data-i18n-placeholder="publications.search">
+                <input type="text" id="searchInput" placeholder="Search by title, author, or keyword...">
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">All Types</button>
@@ -817,11 +815,6 @@
                             <div class="pub-title">人工智能时代的外语与翻译教育：对外语及翻译人才培养的探讨与反思 (Foreign language and translation education in the era of artificial intelligence: Exploration and reflection on the cultivation of language and translation talents) [in Chinese]</div>
                             <div class="pub-authors"><span class="highlight-author">Liu, K*</span>, & Yu, J.</div>
                             <div class="pub-journal"><em>当代外语教育 (Contemporary Foreign Language Education)</em>, 10, 1-11</div>
-                            <div class="pub-actions">
-                                <a href="file/foreign_language_translation_ai.pdf" class="pub-link" target="_blank">
-                                    <i class="fas fa-file-pdf"></i> PDF
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -834,11 +827,6 @@
                             <div class="pub-title">Unravelling the stylistic nuances: a comparative multidimensional analysis of amateur and professional translations of Legends of the Condor Heroes</div>
                             <div class="pub-authors">Chou, I., Xiang, Z., & <span class="highlight-author">Liu, K*</span></div>
                             <div class="pub-journal"><em>Humanities and Social Sciences Communications</em>, 11, 1053</div>
-                            <div class="pub-actions">
-                                <a href="file/unravelling_stylistic_nuances.pdf" class="pub-link" target="_blank">
-                                    <i class="fas fa-file-pdf"></i> PDF
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -851,11 +839,6 @@
                             <div class="pub-title">How do students engage with parallel corpora in translation? A multiple case study approach</div>
                             <div class="pub-authors"><span class="highlight-author">Liu, K.</span>, Su, Y., Lai, C., & Jin, T.</div>
                             <div class="pub-journal"><em>International Journal of Applied Linguistics</em> (Advance online publication), 1-21</div>
-                            <div class="pub-actions">
-                                <a href="file/how_do_students.pdf" class="pub-link" target="_blank">
-                                    <i class="fas fa-file-pdf"></i> PDF
-                                </a>
-                            </div>
                         </div>
                     </div>
 
