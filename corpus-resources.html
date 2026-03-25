@@ -3,150 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corpus Resources - Quantitative Translation Research Laboratory</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Corpus and computational linguistics resources from Quantitative Translation Research Lab">
+    
+    <title>Resources | Quantitative Translation Research Lab</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Design System CSS -->
+    <link href="css/design-system.css" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* Resource Categories */
+        .resource-category {
+            margin-bottom: var(--space-12);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .category-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .category-title {
+            font-size: var(--text-3xl);
+            color: var(--color-gray-900);
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
         }
-
-        .container-wrapper {
-            max-width: 90%;
-            margin: 0 auto;
+        
+        .category-description {
+            color: var(--color-gray-600);
+            font-size: var(--text-lg);
+            margin-top: var(--space-2);
         }
-
-        header img {
+        
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        /* Resource Card */
+        .resource-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-600), var(--color-primary-500));
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--color-primary-200);
+        }
+        
+        .resource-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .resource-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .resource-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .resource-logo i {
+            font-size: 24px;
+            color: var(--color-primary-600);
+        }
+        
+        .resource-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+            margin: 0 0 var(--space-2) 0;
+            line-height: var(--leading-tight);
+        }
+        
+        .resource-subtitle {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+        
+        .resource-description {
+            color: var(--color-gray-700);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+        
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .resource-tag {
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-primary-50);
+            color: var(--color-primary-700);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-medium);
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--color-primary-600);
+            font-weight: var(--font-semibold);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .resource-link:hover {
+            color: var(--color-primary-700);
+            gap: var(--space-3);
+        }
+        
+        .resource-link i {
+            transition: transform var(--transition-fast);
+        }
+        
+        .resource-link:hover i {
+            transform: translateX(2px);
+        }
+        
+        /* Special Resource Cards */
+        .resource-card.featured {
+            background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-600));
+            color: white;
+        }
+        
+        .resource-card.featured::before {
+            background: white;
+        }
+        
+        .resource-card.featured .resource-title,
+        .resource-card.featured .resource-description,
+        .resource-card.featured .resource-subtitle {
+            color: white;
+        }
+        
+        .resource-card.featured .resource-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .resource-card.featured .resource-link {
+            color: white;
+        }
+        
+        .resource-card.featured .resource-link:hover {
+            color: var(--color-primary-100);
+        }
+        
+        .resource-card.featured .resource-logo {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .resource-card.featured .resource-logo i {
+            color: white;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: var(--space-3);
+            right: var(--space-3);
+            background: var(--color-accent-500);
+            color: white;
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Search Box */
+        .resource-search {
+            background: var(--bg-primary);
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-8);
+        }
+        
+        .search-input {
+            position: relative;
+        }
+        
+        .search-input input {
             width: 100%;
-            height: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: var(--space-4) var(--space-6);
+            padding-left: var(--space-12);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: all var(--transition-fast);
         }
-
-        nav {
-            background-color: #004d99;
-            padding: 10px 0;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        
+        .search-input input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
-
-        nav a {
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            display: inline-block;
+        
+        .search-input i {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-400);
         }
-
-        nav a:hover {
-            background-color: #003366;
-        }
-
-        .content {
-            padding: 40px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: left;
-            line-height: 1.6;
-            font-size: 1.1em;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        h1, h2 {
-            color: #004d99;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        a.resource-link {
-            color: #004d99;
-            text-decoration: none;
-        }
-
-        a.resource-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <i class="fas fa-language"></i>
+                <span>Trans-Lab</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="people.html" class="nav-link">People</a></li>
+                    <li><a href="grants.html" class="nav-link">Grants</a></li>
+                    <li><a href="publications.html" class="nav-link">Publications</a></li>
+                    <li><a href="corpus-resources.html" class="nav-link active">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container-wrapper">
-        <header>
-            <img src="image/banner.jpg" alt="Banner Image">
-        </header>
+    <!-- Hero Section (Smaller) -->
+    <section class="hero" style="padding: var(--space-16) var(--space-6);">
+        <div class="hero-content">
+            <h1 class="hero-title" style="font-size: var(--text-5xl);">Resources</h1>
+            <p class="hero-subtitle" style="font-size: var(--text-lg);">
+                Corpus and computational linguistics tools for translation research
+            </p>
+        </div>
+    </section>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="people.html">People</a>
-            <a href="grants.html">Grants</a>
-            <a href="publications.html">Publications</a>
-            <a href="corpus-resources.html">Resources</a>
-        </nav>
-
-        <div class="content">
-            <h1>Corpus and Computational Linguistics Resources</h1>
-            <p>Below is a list of valuable resources for corpus studies and computational linguistics. These resources can greatly aid in translation research, language studies, and computational analysis.</p>
-
-            <h2>Corpus Resources</h2>
-            <ul>
-                <li><a class="resource-link" href="https://tr-corpus.com/" target="_blank">TR Corpus</a> - A comprehensive resource for translation-related corpora.</li>
-                <li><a class="resource-link" href="https://tr-corpus.com/gen-ai/" target="_blank">AI Translation Platform</a> - A platform for generating translations using AI, designed to support advanced research in translation studies.</li>
-                <li><a class="resource-link" href="https://corpus.byu.edu/" target="_blank">Corpus of Contemporary American English (COCA)</a> - A vast resource for linguistic research, offering a wide range of texts for analysis.</li>
-                <li><a class="resource-link" href="https://www.sketchengine.eu/" target="_blank">Sketch Engine</a> - A powerful tool for corpus analysis, with access to over 500 corpora in more than 90 languages.</li>
-                <li><a class="resource-link" href="https://www.english-corpora.org/bnc/" target="_blank">British National Corpus (BNC)</a> - A large text corpus of written and spoken English from diverse sources.</li>
-                <li><a class="resource-link" href="https://en.wikipedia.org/wiki/TED_(conference)" target="_blank">TED Talks Corpus</a> - A resource for studying spoken English and its translation, containing transcripts of TED Talks and their translations.</li>
-                <li><a class="resource-link" href="https://www.let.rug.nl/vannoord/alp/Alpino/" target="_blank">Alpino Treebank</a> - A syntactically annotated corpus for Dutch, providing deep syntactic analysis of texts.</li>
-                <li><a class="resource-link" href="https://www.childes.talkbank.org/" target="_blank">CHILDES (Child Language Data Exchange System)</a> - A resource for studying language acquisition, with transcripts of child language and their translations.</li>
-                <li><a class="resource-link" href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a> - Over 60,000 free eBooks for linguistic and translation studies.</li>
-                <li><a class="resource-link" href="https://www.elra.info/en/" target="_blank">European Language Resources Association (ELRA)</a> - Provides access to a variety of language resources for research and development.</li>
-                <li><a class="resource-link" href="https://www.opensubtitles.org/" target="_blank">OpenSubtitles Corpus</a> - A collection of subtitles for movies and TV shows, useful for linguistic analysis and translation studies.</li>
-            </ul>
-
-            <h2>Computational Linguistics Resources</h2>
-            <ul>
-                <li><a class="resource-link" href="https://www.nltk.org/" target="_blank">Natural Language Toolkit (NLTK)</a> - A leading platform for building Python programs to work with human language data.</li>
-                <li><a class="resource-link" href="https://spacy.io/" target="_blank">spaCy</a> - An advanced NLP library in Python for processing and understanding large volumes of text.</li>
-                <li><a class="resource-link" href="https://stanfordnlp.github.io/CoreNLP/" target="_blank">Stanford CoreNLP</a> - A suite of NLP tools for performing a wide range of linguistic analysis tasks.</li>
-                <li><a class="resource-link" href="https://opennlp.apache.org/" target="_blank">Apache OpenNLP</a> - A machine learning-based toolkit for processing natural language text.</li>
-                <li><a class="resource-link" href="https://www.tensorflow.org/" target="_blank">TensorFlow</a> - An open-source platform for machine learning, widely used in computational linguistics research.</li>
-                <li><a class="resource-link" href="https://huggingface.co/transformers/" target="_blank">Hugging Face Transformers</a> - A library that provides general-purpose architectures for natural language understanding and generation.</li>
-                <li><a class="resource-link" href="https://fasttext.cc/" target="_blank">FastText</a> - A library for efficient learning of word representations and sentence classification.</li>
-                <li><a class="resource-link" href="https://github.com/explosion/thinc" target="_blank">Thinc</a> - A lightweight deep learning library for NLP that supports spaCy.</li>
-                <li><a class="resource-link" href="https://www.lrec-conf.org/" target="_blank">LREC (Language Resources and Evaluation Conference)</a> - The leading conference on language resources and evaluation, with proceedings available online.</li>
-                <li><a class="resource-link" href="https://aclweb.org/anthology/" target="_blank">ACL Anthology</a> - A digital archive of research papers in computational linguistics, providing access to thousands of publications.</li>
-            </ul>
+    <!-- Main Content -->
+    <main class="container-wrapper">
+        
+        <!-- Search -->
+        <div class="resource-search animate-fade-in-up">
+            <div class="search-input">
+                <i class="fas fa-search"></i>
+                <input type="text" id="resourceSearch" placeholder="Search resources...">
+            </div>
         </div>
 
-        <footer>
-            <p>&copy; 2024 Quantitative Translation Research Laboratory, The Hong Kong Polytechnic University</p>
-        </footer>
-    </div>
+        <!-- Corpus Resources -->
+        <div class="resource-category" id="corpus-resources">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Corpus Resources</h2>
+                    <p class="category-description">Comprehensive corpora for translation and linguistic research</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                
+                <!-- Featured: TR Corpus -->
+                <div class="resource-card featured animate-fade-in-up">
+                    <span class="featured-badge">Featured</span>
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">TR Corpus</h3>
+                            <p class="resource-subtitle">Translation Research Platform</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A comprehensive resource for translation-related corpora. Our lab's dedicated platform 
+                        for translation research with advanced search and analysis tools.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Translation</span>
+                        <span class="resource-tag">Corpus</span>
+                        <span class="resource-tag">Research</span>
+                    </div>
+                    <a href="https://tr-corpus.com/" target="_blank" class="resource-link">
+                        <span>Visit Platform</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
 
-    <!-- Javascript files -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                <!-- AI Translation Platform -->
+                <div class="resource-card featured animate-fade-in-up delay-100">
+                    <span class="featured-badge">Featured</span>
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">AI Translation Platform</h3>
+                            <p class="resource-subtitle">Advanced AI-Powered Research Tool</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A platform for generating translations using AI, designed to support advanced research 
+                        in translation studies. Part of TR Corpus ecosystem.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">AI</span>
+                        <span class="resource-tag">Machine Translation</span>
+                        <span class="resource-tag">Research</span>
+                    </div>
+                    <a href="https://tr-corpus.com/gen-ai/" target="_blank" class="resource-link">
+                        <span>Try Platform</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
 
+                <!-- COCA -->
+                <div class="resource-card animate-fade-in-up delay-200">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">COCA</h3>
+                            <p class="resource-subtitle">Corpus of Contemporary American English</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A vast resource for linguistic research, offering a wide range of texts for analysis. 
+                        One of the largest corpora of American English.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">American English</span>
+                        <span class="resource-tag">Large Corpus</span>
+                    </div>
+                    <a href="https://corpus.byu.edu/" target="_blank" class="resource-link">
+                        <span>Access Corpus</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Sketch Engine -->
+                <div class="resource-card animate-fade-in-up delay-300">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Sketch Engine</h3>
+                            <p class="resource-subtitle">Corpus Analysis Platform</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A powerful tool for corpus analysis, with access to over 500 corpora in more than 
+                        90 languages. Advanced word sketch and collocation features.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Multi-language</span>
+                        <span class="resource-tag">Analysis Tools</span>
+                    </div>
+                    <a href="https://www.sketchengine.eu/" target="_blank" class="resource-link">
+                        <span>Visit Website</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- BNC -->
+                <div class="resource-card animate-fade-in-up delay-400">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">British National Corpus</h3>
+                            <p class="resource-subtitle">BNC</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A large text corpus of written and spoken English from diverse sources. 
+                        Essential resource for British English studies.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">British English</span>
+                        <span class="resource-tag">Spoken & Written</span>
+                    </div>
+                    <a href="https://www.english-corpora.org/bnc/" target="_blank" class="resource-link">
+                        <span>Access BNC</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- TED Talks -->
+                <div class="resource-card animate-fade-in-up delay-500">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">TED Talks Corpus</h3>
+                            <p class="resource-subtitle">Spoken Language Resource</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A resource for studying spoken English and its translation, containing transcripts 
+                        of TED Talks and their translations.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Spoken Language</span>
+                        <span class="resource-tag">Subtitles</span>
+                    </div>
+                    <a href="https://en.wikipedia.org/wiki/TED_(conference)" target="_blank" class="resource-link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- OpenSubtitles -->
+                <div class="resource-card animate-fade-in-up delay-600">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">OpenSubtitles</h3>
+                            <p class="resource-subtitle">Movie & TV Subtitles Corpus</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A collection of subtitles for movies and TV shows, useful for linguistic analysis 
+                        and translation studies.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Subtitles</span>
+                        <span class="resource-tag">Multilingual</span>
+                    </div>
+                    <a href="https://www.opensubtitles.org/" target="_blank" class="resource-link">
+                        <span>Visit Website</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project Gutenberg -->
+                <div class="resource-card animate-fade-in-up delay-700">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Project Gutenberg</h3>
+                            <p class="resource-subtitle">Free eBooks Library</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        Over 60,000 free eBooks for linguistic and translation studies. 
+                        Excellent source for literary texts.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Literature</span>
+                        <span class="resource-tag">Free Access</span>
+                    </div>
+                    <a href="https://www.gutenberg.org/" target="_blank" class="resource-link">
+                        <span>Browse Library</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Computational Linguistics Resources -->
+        <div class="resource-category" id="computational-resources">
+            <div class="category-header">
+                <div class="category-icon" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Computational Linguistics Tools</h2>
+                    <p class="category-description">Software and platforms for NLP and text analysis</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                
+                <!-- NLTK -->
+                <div class="resource-card animate-fade-in-up">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">NLTK</h3>
+                            <p class="resource-subtitle">Natural Language Toolkit</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A leading platform for building Python programs to work with human language data. 
+                        Essential for NLP research.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Python</span>
+                        <span class="resource-tag">NLP</span>
+                        <span class="resource-tag">Open Source</span>
+                    </div>
+                    <a href="https://www.nltk.org/" target="_blank" class="resource-link">
+                        <span>Documentation</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- spaCy -->
+                <div class="resource-card animate-fade-in-up delay-100">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">spaCy</h3>
+                            <p class="resource-subtitle">Industrial-Strength NLP</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        An advanced NLP library in Python for processing and understanding large volumes 
+                        of text. Fast and production-ready.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Python</span>
+                        <span class="resource-tag">Fast</span>
+                        <span class="resource-tag">Production</span>
+                    </div>
+                    <a href="https://spacy.io/" target="_blank" class="resource-link">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Stanford CoreNLP -->
+                <div class="resource-card animate-fade-in-up delay-200">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Stanford CoreNLP</h3>
+                            <p class="resource-subtitle">NLP Toolkit</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A suite of NLP tools for performing a wide range of linguistic analysis tasks. 
+                        Java-based with multiple language support.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Java</span>
+                        <span class="resource-tag">Comprehensive</span>
+                    </div>
+                    <a href="https://stanfordnlp.github.io/CoreNLP/" target="_blank" class="resource-link">
+                        <span>Documentation</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Hugging Face Transformers -->
+                <div class="resource-card animate-fade-in-up delay-300">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">Transformers</h3>
+                            <p class="resource-subtitle">Hugging Face Library</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A library that provides general-purpose architectures for natural language 
+                        understanding and generation. State-of-the-art models.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Deep Learning</span>
+                        <span class="resource-tag">Transformers</span>
+                        <span class="resource-tag">SOTA</span>
+                    </div>
+                    <a href="https://huggingface.co/transformers/" target="_blank" class="resource-link">
+                        <span>Explore Models</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- TensorFlow -->
+                <div class="resource-card animate-fade-in-up delay-400">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">TensorFlow</h3>
+                            <p class="resource-subtitle">Machine Learning Platform</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        An open-source platform for machine learning, widely used in computational 
+                        linguistics research.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Machine Learning</span>
+                        <span class="resource-tag">Neural Networks</span>
+                    </div>
+                    <a href="https://www.tensorflow.org/" target="_blank" class="resource-link">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- ACL Anthology -->
+                <div class="resource-card animate-fade-in-up delay-500">
+                    <div class="resource-header">
+                        <div class="resource-logo">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="resource-title">ACL Anthology</h3>
+                            <p class="resource-subtitle">Research Paper Archive</p>
+                        </div>
+                    </div>
+                    <p class="resource-description">
+                        A digital archive of research papers in computational linguistics, providing 
+                        access to thousands of publications.
+                    </p>
+                    <div class="resource-tags">
+                        <span class="resource-tag">Papers</span>
+                        <span class="resource-tag">Research</span>
+                        <span class="resource-tag">Archive</span>
+                    </div>
+                    <a href="https://aclweb.org/anthology/" target="_blank" class="resource-link">
+                        <span>Browse Papers</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="content" style="text-align: center; background: linear-gradient(135deg, var(--color-primary-800), var(--color-primary-600)); color: white; margin-top: var(--space-12);">
+            <h2 style="color: white; margin-bottom: var(--space-4);">Need Help Finding Resources?</h2>
+            <p style="font-size: var(--text-lg); opacity: 0.95; margin-bottom: var(--space-6); color: white;">
+                Can't find what you're looking for? We're happy to help you identify the right resources 
+                for your research needs.
+            </p>
+            <a href="mailto:kl.liu@polyu.edu.hk" class="btn btn-primary" style="background: white; color: var(--color-primary-700);">
+                <i class="fas fa-envelope"></i>
+                Contact Us
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Quantitative Translation Research Laboratory</p>
+            <p style="margin-top: var(--space-2); color: var(--color-gray-400);">
+                Department of Chinese and Bilingual Studies | The Hong Kong Polytechnic University
+            </p>
+            <p style="margin-top: var(--space-4);">
+                <a href="mailto:kl.liu@polyu.edu.hk">
+                    <i class="fas fa-envelope"></i> kl.liu@polyu.edu.hk
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sticky Header Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('resourceSearch');
+        const resourceCards = document.querySelectorAll('.resource-card');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            resourceCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.animate-fade-in-up');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            fadeObserver.observe(el);
+        });
+    </script>
 </body>
 </html>

@@ -3,336 +3,810 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications - Quantitative Translation Research Laboratory</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-   <style>
-    /* Global Settings */
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-
-    .container-wrapper {
-        max-width: 90%;
-        margin: 0 auto;
-    }
-
-    /* Header Banner */
-    header img {
-        width: 100%;
-        height: auto;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Navigation */
-    nav {
-        background-color: #004d99;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    nav a {
-        color: #ffffff;
-        padding: 10px 20px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1em;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-    }
-
-    nav a:hover {
-        background-color: #003366;
-    }
-
-    /* Main Content */
-    .content {
-        padding: 40px 30px;
-        margin: 30px auto;
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
-        font-size: 1.05em;
-        line-height: 1.7;
-    }
-
-    h1, h2 {
-        color: #004d99;
-        margin-bottom: 20px;
-    }
-
-    .publication-section {
-        margin-bottom: 50px;
-    }
-
-    /* Year Labels */
-    .year-heading {
-        font-size: 1.5em;
-        font-weight: 600;
-        color: #2c3e50;
-        margin: 40px 0 20px;
-        padding-left: 14px;
-        border-left: 6px solid #004d99;
-        background-color: #e9f2fc;
-        border-radius: 4px;
-    }
-
-    /* Publication Items */
-    .publication-item {
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-        border-bottom: 1px dashed #ccc;
-    }
-
-    .publication-item p {
-        margin: 5px 0;
-    }
-
-    .highlight {
-        font-weight: bold;
-        color: #004d99;
-    }
-
-    .download-link {
-        display: inline-block;
-        margin-top: 5px;
-        font-size: 0.95em;
-        color: #0066cc;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .download-link:hover {
-        color: #003366;
-        text-decoration: underline;
-    }
-
-    /* Footer */
-    footer {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 15px 0;
-        font-size: 0.95em;
-        margin-top: 40px;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-        .content {
-            padding: 25px 20px;
+    <meta name="description" content="Publications from Quantitative Translation Research Lab - Hong Kong Polytechnic University">
+    
+    <title>Publications | Quantitative Translation Research Lab</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Design System CSS -->
+    <link href="css/design-system.css" rel="stylesheet">
+    
+    <style>
+        /* Search and Filter */
+        .search-filter-bar {
+            background: var(--bg-primary);
+            padding: var(--space-6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-8);
         }
-
-        nav a {
-            font-size: 1em;
-            padding: 10px 15px;
+        
+        .search-box {
+            position: relative;
+            margin-bottom: var(--space-4);
         }
-
-        .year-heading {
-            font-size: 1.3em;
-            padding-left: 10px;
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--space-4) var(--space-6);
+            padding-left: var(--space-12);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: all var(--transition-fast);
         }
-    }
-</style>
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-400);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+        
+        .filter-btn {
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-gray-100);
+            border: 2px solid transparent;
+            border-radius: var(--radius-full);
+            color: var(--color-gray-700);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .filter-btn:hover {
+            background: var(--color-primary-50);
+            color: var(--color-primary-700);
+        }
+        
+        .filter-btn.active {
+            background: var(--color-primary-600);
+            color: white;
+            border-color: var(--color-primary-600);
+        }
+        
+        /* Publication List */
+        .publication-year {
+            margin-bottom: var(--space-8);
+        }
+        
+        .year-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-4) var(--space-6);
+            background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-600));
+            color: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-4);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .year-header:hover {
+            transform: translateX(4px);
+        }
+        
+        .year-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+        }
+        
+        .year-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+        }
+        
+        .year-toggle {
+            transition: transform var(--transition-fast);
+        }
+        
+        .year-header.collapsed .year-toggle {
+            transform: rotate(-90deg);
+        }
+        
+        .publication-list {
+            display: grid;
+            gap: var(--space-4);
+            overflow: hidden;
+            max-height: 2000px;
+            transition: max-height var(--transition-slow);
+        }
+        
+        .publication-list.collapsed {
+            max-height: 0;
+        }
+        
+        .publication-item {
+            background: var(--bg-primary);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-primary-500);
+            transition: all var(--transition-base);
+        }
+        
+        .publication-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .publication-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+        
+        .pub-type {
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .pub-type.journal {
+            background: var(--color-primary-100);
+            color: var(--color-primary-700);
+        }
+        
+        .pub-type.conference {
+            background: var(--color-accent-100);
+            color: var(--color-accent-700);
+        }
+        
+        .pub-type.book {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .publication-title {
+            font-size: var(--text-lg);
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-3);
+            line-height: var(--leading-normal);
+        }
+        
+        .publication-authors {
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
+        }
+        
+        .publication-journal {
+            color: var(--color-gray-600);
+            font-style: italic;
+            margin-bottom: var(--space-3);
+            font-size: var(--text-sm);
+        }
+        
+        .highlight-author {
+            font-weight: var(--font-semibold);
+            color: var(--color-primary-700);
+        }
+        
+        .publication-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+        
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            color: var(--color-gray-700);
+            font-size: var(--text-sm);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .pub-link:hover {
+            background: var(--color-primary-50);
+            color: var(--color-primary-700);
+            text-decoration: none;
+        }
+        
+        .pub-link i {
+            font-size: var(--text-base);
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: var(--space-12);
+            color: var(--color-gray-600);
+        }
+        
+        .no-results i {
+            font-size: 48px;
+            color: var(--color-gray-400);
+            margin-bottom: var(--space-4);
+        }
+        
+        @media (max-width: 768px) {
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .year-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-2);
+            }
+            
+            .publication-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <div class="container-wrapper">
-        <header>
-            <img src="image/banner.jpg" alt="Banner Image">
-        </header>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="people.html">People</a>
-            <a href="grants.html">Grants</a>
-            <a href="publications.html">Publications</a>
-            <a href="corpus-resources.html">Resources</a>
-        </nav>
-
-        <div class="content">
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <i class="fas fa-language"></i>
+                <span>Trans-Lab</span>
+            </a>
             
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="people.html" class="nav-link">People</a></li>
+                    <li><a href="grants.html" class="nav-link">Grants</a></li>
+                    <li><a href="publications.html" class="nav-link active">Publications</a></li>
+                    <li><a href="corpus-resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            <div class="publication-section">
-                <h2>Journal Papers</h2>
+    <!-- Hero Section (Smaller) -->
+    <section class="hero" style="padding: var(--space-16) var(--space-6);">
+        <div class="hero-content">
+            <h1 class="hero-title" style="font-size: var(--text-5xl);">Publications</h1>
+            <p class="hero-subtitle" style="font-size: var(--text-lg);">
+                Our research contributions to quantitative translation studies
+            </p>
+        </div>
+    </section>
 
-<div class="year-heading">2026</div>
-<div class="publication-item">
-    <p>Wang, L., Sun, S., Wang, X., Gu, J., & <span class="highlight">Liu, K.</span> (2026). Workflow matters: Comparing human translators and multi-agent LLMs in literary translation. <em>Target</em>. (Accepted).</p>
-</div>
-<div class="publication-item">
-    <p>Hu, Y., <span class="highlight">Liu, K.</span>, & Lei, L. (2026). Quantifying syntagmatic patterning in translated and native Chinese: An R-Motif approach based on POS sequences. <em>Journal of Quantitative Linguistics</em>, 1–25.</p>
-    <a href="file/quantifying_syntagmatic_patterning.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
+    <!-- Main Content -->
+    <main class="container-wrapper">
+        
+        <!-- Search and Filter -->
+        <div class="search-filter-bar animate-fade-in-up">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search publications by title, author, or keyword...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                <button class="filter-btn" data-filter="conference">Conference Papers</button>
+                <button class="filter-btn" data-filter="book">Books & Chapters</button>
+            </div>
+        </div>
 
-
-
-<div class="publication-item">
-    <p>Hu, Y., & <span class="highlight">Liu, K.</span> (2026). A bibliometric analysis of trends and developments in corpus translation studies (2015–2024). <em>SAGE Open</em>, 16(1), 21582440261415716. <a href="https://doi.org/10.1177/21582440261415716" target="_blank">DOI: 10.1177/21582440261415716</a></p>
-    <a href="file/bibliometric_analysis_corpus_translation_2015_2024.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="year-heading">2025</div>
-<div class="publication-item">
-    <p>Yao, Y., <span class="highlight">Liu, K.</span>, Cheung, A. K. F., & Li, D. (2025). Syntactic complexity as a discriminator between machine and human interpreting: A machine-learning classification approach. <em>Linguistica Antverpiensia, New Series–Themes in Translation Studies</em>, 24.</p>
-    <a href="file/syntactic_complexity_machine_human_interpreting.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Zhu, L., Su, Y., Xu, S., & <span class="highlight">Liu, K.</span> (2025). Enhancing EFL argumentative writing through an AI-powered corpus: Impact on learner writing proficiency. <em>Computer Assisted Language Learning</em>, 1–26. <a href="https://doi.org/10.1080/09588221.2025.2599152" target="_blank">DOI: 10.1080/09588221.2025.2599152</a></p>
-    <a href="file/efl_argumentative_writing_ai_corpus.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Su, Y., Xu, S., & <span class="highlight">Liu, K.</span> (2025). Adapt or adopt? Examining the efficacy of ChatGPT in providing translation feedback. <em>The Interpreter and Translator Trainer</em>, 19(3–4), 296–316. <a href="https://doi.org/10.1080/1750399X.2025.2541486" target="_blank">DOI: 10.1080/1750399X.2025.2541486</a></p>
-    <a href="file/chatgpt_translation_feedback.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Wang, Z., Cheung, A. K., Xu, H., & <span class="highlight">Liu, K.</span> (2025). Assessing lexical and syntactic simplification in translated English with entropy analysis. <em>Humanities and Social Sciences Communications</em>, 12(1), 1–12.</p>
-</div>
-
-<div class="publication-item">
-    <p>Wang, L., Xu, S., & <span class="highlight">Liu, K.</span> (2025). What drives university students to use ChatGPT for translation? Disciplinary and experiential influences. <em>International Journal of Applied Linguistics</em>. Advance online publication.</p>
-</div>
-
-<div class="publication-item">
-    <p>Chou, I., <span class="highlight">Liu, K.</span>, & Xu, H. (2025). Language contact and translation: Dependency relations as a lens for source language influence in fiction. <em>Lingua</em>, 321, 103937. <a href="https://doi.org/10.1016/j.lingua.2025.103937" target="_blank">DOI: 10.1016/j.lingua.2025.103937</a></p>
-</div>
-
-<div class="publication-item">
-    <p>Sun, Y., Zhu, X., & <span class="highlight">Liu, K.</span> (2025). Judicial jigsaw and power dynamics: A cognitive-functional analysis of Chinese courtroom discourse. <em>International Journal of Legal Discourse</em>, 10(1), 181–207. <a href="https://doi.org/10.1515/ijld-2025-2009" target="_blank">DOI: 10.1515/ijld-2025-2009</a></p>
-    <a href="file/legal_discourse_power_dynamics.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Huang, Y., Cheung, A. K. F., <span class="highlight">Liu, K.</span>, & Xu, H. (2025). Can sentiment analysis help to assess accuracy in interpreting? A corpus-assisted computational linguistic approach. <em>Applied Linguistics</em>, amaf026. <a href="https://doi.org/10.1093/applin/amaf026" target="_blank">DOI: 10.1093/applin/amaf026</a></p>
-</div>
-
-<div class="publication-item">
-    <p>Jia, X., Wei, Y., <span class="highlight">Liu, K.</span>, & Lei, L. (2025). Developing and validating an academic vocabulary list in Chinese. <em>International Journal of Applied Linguistics</em>, 35(2), 938–948. <a href="https://doi.org/10.1111/ijal.12675" target="_blank">DOI: 10.1111/ijal.12675</a></p>
-    <a href="file/academic_vocabulary_chinese.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Xu, H., Gu, J., <span class="highlight">Liu, K.</span>, & Li, Q. (2025). Can professional interpreters truly convey the speaker's sentiment? Exploring the potential of a computational approach. <em>Digital Scholarship in the Humanities</em>, 40(2), 639–650. <a href="https://doi.org/10.1093/llc/fqaf017" target="_blank">DOI: 10.1093/llc/fqaf017</a></p>
-    <a href="file/interpreter_sentiment_computational.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Su, Z., Xu, H., & <span class="highlight">Liu, K*.</span> (2025). Linguistic compression and cognitive load: A quantitative study of the Menzerath–Altmann Law in interpreted, L2 and native English speech. <em>Journal of Quantitative Linguistics</em>, 1–28. <a href="https://doi.org/10.1080/09296174.2025.2468573" target="_blank">DOI: 10.1080/09296174.2025.2468573</a></p>
-    <a href="file/linguistic_compression_cognitive_load.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Li, R., <span class="highlight">Liu, K.</span>, & Cheung, A. K. F. (2025). Exploring the impact of intermodal transfer on simplification: Insights from signed language interpreting, subtitle translation, and native speech in TED talks. <em>Language Sciences</em>, 110, 101726. <a href="https://doi.org/10.1016/j.langsci.2025.101726" target="_blank">DOI: 10.1016/j.langsci.2025.101726</a></p>
-    <a href="file/intermodal_transfer_simplification.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Xue, P., Xiong, J., Tan, L., Liu, Z., & <span class="highlight">Liu, K.</span> (2025). Attention-enabled multi-layer subword joint learning for Chinese word embedding. <em>Cognitive Computation</em>, 17, 75. <a href="https://doi.org/10.1007/s12559-025-10431-3" target="_blank">DOI: 10.1007/s12559-025-10431-3</a></p>
-    <a href="file/subword_joint_learning_embedding.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Xu, S., Su, Y., & <span class="highlight">Liu, K*.</span> (2025). Investigating student engagement with AI-driven feedback in translation revision: A mixed-methods study. <em>Education and Information Technologies</em>, 1-27. <a href="https://doi.org/10.1007/s10639-025-13457-0" target="_blank">DOI: 10.1007/s10639-025-13457-0</a></p>
-    <a href="file/student_engagement_ai_translation.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Sun, Y., & <span class="highlight">Liu, K*.</span> (2025). Stylistic nuances through syntactic complexity: A corpus-assisted study of narration and dialogue in two English translations of Hongloumeng. <em>Applied Corpus Linguistics</em>, 100125. <a href="https://doi.org/10.1016/j.acorp.2025.100125" target="_blank">DOI: 10.1016/j.acorp.2025.100125</a></p>
-    <a href="file/stylistic_nuances_hongloumeng.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Kwok, H. L., Shi, Y., Xu, H., Li, D., & <span class="highlight">Liu, K*.</span> (2025). GenAI as a translation assistant? A corpus-based study on lexical and syntactic complexity of GPT-post-edited learner translation. <em>System</em>, 130(103618). <a href="https://doi.org/10.1016/j.system.2025.103618" target="_blank">DOI: 10.1016/j.system.2025.103618</a></p>
-    <a href="file/genai_translation_assistant.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p><span class="highlight">Liu, K*.</span>, & Li, D. (2025). 基于熵算法的口译语言简化研究：受限语言视角 (An Entropy-based Study of Simplification in Interpreting: A Constrained Language Perspective) [in Chinese]. <em>外语教学与研究 (Foreign Language Teaching and Research)</em>, 57(1), 118–129.</p>
-    <a href="file/entropy_based_simplification_interpreting.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Liu, X., Xiao, W., & <span class="highlight">Liu, K*.</span> (2025). Analyzing research trends in localization: A comparative systematic review of journal articles in English and Chinese (2012–2023). <em>Digital Translation: International Journal of Translation and Localization</em>, 11(2), 91–115. <a href="https://doi.org/10.1075/dt.23009.liu" target="_blank">DOI: 10.1075/dt.23009.liu</a></p>
-    <a href="file/localization_trends_review.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="year-heading">2024</div>
-
-<div class="publication-item">
-    <p>Wang, Z., Xu, H., & <span class="highlight">Liu, K*.</span> (2024). Lexical complexity in corporate communication: A corpus-based study of translated and non-translated chairman's statements. <em>Corpus-based Studies across Humanities</em>. Advance online publication. <a href="https://doi.org/10.1515/csh-2024-0026" target="_blank">DOI: 10.1515/csh-2024-0026</a></p>
-    <a href="file/corporate_communication_complexity.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p><span class="highlight">Liu, K*.</span>, & Yu, J. (2024). 人工智能时代的外语与翻译教育：对外语及翻译人才培养的探讨与反思 (Foreign language and translation education in the era of artificial intelligence: Exploration and reflection on the cultivation of language and translation talents) [in Chinese]. <em>当代外语教育 (Contemporary Foreign Language Education)</em>, 10, 1-11.</p>
-    <a href="file/foreign_language_translation_ai.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Chou, I., Xiang, Z., & <span class="highlight">Liu, K*.</span> (2024). Unravelling the stylistic nuances: a comparative multidimensional analysis of amateur and professional translations of <em>Legends of the Condor Heroes</em>. <em>Humanities and Social Sciences Communications</em>, 11, 1053. <a href="https://doi.org/10.1057/s41599-024-03468-6" target="_blank">DOI: 10.1057/s41599-024-03468-6</a></p>
-    <a href="file/unravelling_stylistic_nuances.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p><span class="highlight">Liu, K.</span>, Su, Y., Lai, C., & Jin, T. (2024). How do students engage with parallel corpora in translation? A multiple case study approach. <em>International Journal of Applied Linguistics</em>. Advance online publication. <a href="https://doi.org/10.1111/ijal.12594" target="_blank">DOI: 10.1111/ijal.12594</a></p>
-    <a href="file/how_do_students.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Kwok, H. L., Moratto, R., & <span class="highlight">Liu, K*.</span> (2024). Activity versus Descriptivity: A Stylometric Analysis of Two English Translations of Hongloumeng. <em>Glottometrics</em>, (56), 1-21. <a href="https://doi.org/10.53482/2024_56_414" target="_blank">DOI: 10.53482/2024_56_414</a></p>
-    <a href="file/activity.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Yu, J., & <span class="highlight">Liu, K.</span> (2024). 重塑翻译研究: AI 技术影响下的范式转换与未来方向探索 (Reshaping Translation Studies: Paradigm Shifts and Future Directions in the Age of AI Technology) [in Chinese]. <em>外国语 (Journal of Foreign Languages)</em>, 47(4), 72-81.</p>
-    <a href="file/chongsu.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Xu, H., & <span class="highlight">Liu, K*.</span> (2024). The impact of directionality on interpreters' syntactic processing: Insights from syntactic dependency relation measures. <em>Lingua</em>, 308, 103778. <a href="https://doi.org/10.1016/j.lingua.2024.103778" target="_blank">DOI: 10.1016/j.lingua.2024.103778</a></p>
-    <a href="file/impact_of_directionality.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Wang, Z., Cheung, A. K., & <span class="highlight">Liu, K*.</span> (2024). Entropy-based syntactic tree analysis for text classification: a novel approach to distinguishing between original and translated Chinese texts. <em>Digital Scholarship in the Humanities</em>, fqae030. <a href="https://doi.org/10.1093/llc/fqae030" target="_blank">DOI: 10.1093/llc/fqae030</a></p>
-    <a href="file/entropy_based_syntactic_tree.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Wang, Z., & <span class="highlight">Liu, K*.</span> (2024). Linguistic variations between translated and non-translated English chairman's statements in corporate annual reports: A multidimensional analysis. <em>Sage Open</em>, 14(2), 1-17. <a href="https://doi.org/10.1177/215824402412493" target="_blank">DOI: 10.1177/215824402412493</a></p>
-    <a href="file/linguistic_variations.pdf" class="download-link" target="_blank">Download PDF</a>
-</div>
-
-<div class="publication-item">
-    <p>Su, Y., <span class="highlight">Liu, K.</span>, Liu, F., Lee, J., & Jin, T. (2024). Lexical complexity in exemplar EFL texts: Towards text adaptation for 12 grades of the basic English curriculum in China. <em>International Review of Applied Linguistics in Language Teaching</em>, 62(1), 137-164. <a href="https://doi.org/10.1515/iral-2022-0236" target="_blank">DOI: 10.1515/iral-2022-0236</a></p>
-</div>
-
-<div class="publication-item">
-    <p>Wang, Z., Liu, M., & <span class="highlight">Liu, K*.</span> (2024). Utilizing machine learning techniques for classifying translated and non-translated corporate annual reports. <em>Applied Artificial Intelligence</em>, 38(1), 2340393.</p>
-</div>
-
-<div class="publication-item">
-    <p><span class="highlight">Liu, K.</span>, Yin, H., & Cheung, A. K. (2024). Interactional metadiscourse in translated and non-translated medical research article abstracts: A corpus-assisted study. <em>Perspectives</em>, 1-21.</p>
-</div>
-
+        <!-- Publications Content -->
+        <section class="content" id="publicationsContainer">
+            
+            <!-- 2026 -->
+            <div class="publication-year" data-year="2026">
+                <div class="year-header" onclick="toggleYear(this)">
+                    <div>
+                        <div class="year-title">2026</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--space-3);">
+                        <span class="year-count">2 publications</span>
+                        <i class="fas fa-chevron-down year-toggle"></i>
+                    </div>
+                </div>
+                <div class="publication-list">
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Workflow matters: Comparing human translators and multi-agent LLMs in literary translation</h3>
+                        <p class="publication-authors">
+                            Wang, L., Sun, S., Wang, X., Gu, J., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>Target</em> (Accepted)</p>
+                    </div>
+                    
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Quantifying syntagmatic patterning in translated and native Chinese: An R-Motif approach based on POS sequences</h3>
+                        <p class="publication-authors">
+                            Hu, Y., <span class="highlight-author">Liu, K.</span>, & Lei, L.
+                        </p>
+                        <p class="publication-journal"><em>Journal of Quantitative Linguistics</em>, 1–25</p>
+                        <div class="publication-actions">
+                            <a href="file/quantifying_syntagmatic_patterning.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-<footer>
-            <p>&copy; 2024 Quantitative Translation Research Laboratory, The Hong Kong Polytechnic University</p>
-        </footer>
-    </div>
+            <!-- 2025 -->
+            <div class="publication-year" data-year="2025">
+                <div class="year-header" onclick="toggleYear(this)">
+                    <div>
+                        <div class="year-title">2025</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--space-3);">
+                        <span class="year-count">17 publications</span>
+                        <i class="fas fa-chevron-down year-toggle"></i>
+                    </div>
+                </div>
+                <div class="publication-list">
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">A bibliometric analysis of trends and developments in corpus translation studies (2015–2024)</h3>
+                        <p class="publication-authors">
+                            Hu, Y., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>SAGE Open</em>, 16(1), 21582440261415716</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1177/21582440261415716" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/bibliometric_analysis_corpus_translation_2015_2024.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
 
-    <!-- Javascript files -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Syntactic complexity as a discriminator between machine and human interpreting: A machine-learning classification approach</h3>
+                        <p class="publication-authors">
+                            Yao, Y., <span class="highlight-author">Liu, K.</span>, Cheung, A. K. F., & Li, D.
+                        </p>
+                        <p class="publication-journal"><em>Linguistica Antverpiensia, New Series–Themes in Translation Studies</em>, 24</p>
+                        <div class="publication-actions">
+                            <a href="file/syntactic_complexity_machine_human_interpreting.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
 
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Enhancing EFL argumentative writing through an AI-powered corpus: Impact on learner writing proficiency</h3>
+                        <p class="publication-authors">
+                            Zhu, L., Su, Y., Xu, S., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>Computer Assisted Language Learning</em>, 1–26</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1080/09588221.2025.2599152" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/efl_argumentative_writing_ai_corpus.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Adapt or adopt? Examining the efficacy of ChatGPT in providing translation feedback</h3>
+                        <p class="publication-authors">
+                            Su, Y., Xu, S., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>The Interpreter and Translator Trainer</em>, 19(3–4), 296–316</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1080/1750399X.2025.2541486" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/chatgpt_translation_feedback.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Assessing lexical and syntactic simplification in translated English with entropy analysis</h3>
+                        <p class="publication-authors">
+                            Wang, Z., Cheung, A. K., Xu, H., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>Humanities and Social Sciences Communications</em>, 12(1), 1–12</p>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">What drives university students to use ChatGPT for translation? Disciplinary and experiential influences</h3>
+                        <p class="publication-authors">
+                            Wang, L., Xu, S., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>International Journal of Applied Linguistics</em> (Advance online publication)</p>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Language contact and translation: Dependency relations as a lens for source language influence in fiction</h3>
+                        <p class="publication-authors">
+                            Chou, I., <span class="highlight-author">Liu, K.</span>, & Xu, H.
+                        </p>
+                        <p class="publication-journal"><em>Lingua</em>, 321, 103937</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1016/j.lingua.2025.103937" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Judicial jigsaw and power dynamics: A cognitive-functional analysis of Chinese courtroom discourse</h3>
+                        <p class="publication-authors">
+                            Sun, Y., Zhu, X., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>International Journal of Legal Discourse</em>, 10(1), 181–207</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1515/ijld-2025-2009" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/legal_discourse_power_dynamics.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Can sentiment analysis help to assess accuracy in interpreting? A corpus-assisted computational linguistic approach</h3>
+                        <p class="publication-authors">
+                            Huang, Y., Cheung, A. K. F., <span class="highlight-author">Liu, K.</span>, & Xu, H.
+                        </p>
+                        <p class="publication-journal"><em>Applied Linguistics</em>, amaf026</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1093/applin/amaf026" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Developing and validating an academic vocabulary list in Chinese</h3>
+                        <p class="publication-authors">
+                            Jia, X., Wei, Y., <span class="highlight-author">Liu, K.</span>, & Lei, L.
+                        </p>
+                        <p class="publication-journal"><em>International Journal of Applied Linguistics</em>, 35(2), 938–948</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1111/ijal.12675" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/academic_vocabulary_chinese.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Can professional interpreters truly convey the speaker's sentiment? Exploring the potential of a computational approach</h3>
+                        <p class="publication-authors">
+                            Xu, H., Gu, J., <span class="highlight-author">Liu, K.</span>, & Li, Q.
+                        </p>
+                        <p class="publication-journal"><em>Digital Scholarship in the Humanities</em>, 40(2), 639–650</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1093/llc/fqaf017" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/interpreter_sentiment_computational.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Linguistic compression and cognitive load: A quantitative study of the Menzerath–Altmann Law in interpreted, L2 and native English speech</h3>
+                        <p class="publication-authors">
+                            Su, Z., Xu, H., & <span class="highlight-author">Liu, K*</span>
+                        </p>
+                        <p class="publication-journal"><em>Journal of Quantitative Linguistics</em>, 1–28</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1080/09296174.2025.2468573" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/linguistic_compression_cognitive_load.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Exploring the impact of intermodal transfer on simplification: Insights from signed language interpreting, subtitle translation, and native speech in TED talks</h3>
+                        <p class="publication-authors">
+                            Li, R., <span class="highlight-author">Liu, K.</span>, & Cheung, A. K. F.
+                        </p>
+                        <p class="publication-journal"><em>Language Sciences</em>, 110, 101726</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1016/j.langsci.2025.101726" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/intermodal_transfer_simplification.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Attention-enabled multi-layer subword joint learning for Chinese word embedding</h3>
+                        <p class="publication-authors">
+                            Xue, P., Xiong, J., Tan, L., Liu, Z., & <span class="highlight-author">Liu, K.</span>
+                        </p>
+                        <p class="publication-journal"><em>Cognitive Computation</em>, 17, 75</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1007/s12559-025-10431-3" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/subword_joint_learning_embedding.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Investigating student engagement with AI-driven feedback in translation revision: A mixed-methods study</h3>
+                        <p class="publication-authors">
+                            Xu, S., Su, Y., & <span class="highlight-author">Liu, K*</span>
+                        </p>
+                        <p class="publication-journal"><em>Education and Information Technologies</em>, 1-27</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1007/s10639-025-13457-0" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/student_engagement_ai_translation.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="publication-item" data-type="journal">
+                        <div class="publication-meta">
+                            <span class="pub-type journal">Journal</span>
+                        </div>
+                        <h3 class="publication-title">Stylistic nuances through syntactic complexity: A corpus-assisted study of narration and dialogue in two English translations of Hongloumeng</h3>
+                        <p class="publication-authors">
+                            Sun, Y., & <span class="highlight-author">Liu, K*</span>
+                        </p>
+                        <p class="publication-journal"><em>Applied Corpus Linguistics</em>, 100125</p>
+                        <div class="publication-actions">
+                            <a href="https://doi.org/10.1016/j.acorp.2025.100125" class="pub-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>DOI Link</span>
+                            </a>
+                            <a href="file/stylistic_nuances_hongloumeng.pdf" class="pub-link" target="_blank">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note: Add more years as needed -->
+            <div style="text-align: center; padding: var(--space-8); color: var(--color-gray-600);">
+                <p><em>Showing recent publications. For a complete list, please contact the lab.</em></p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Quantitative Translation Research Laboratory</p>
+            <p style="margin-top: var(--space-2); color: var(--color-gray-400);">
+                Department of Chinese and Bilingual Studies | The Hong Kong Polytechnic University
+            </p>
+            <p style="margin-top: var(--space-4);">
+                <a href="mailto:kl.liu@polyu.edu.hk">
+                    <i class="fas fa-envelope"></i> kl.liu@polyu.edu.hk
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sticky Header Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Year Collapse
+        function toggleYear(header) {
+            const list = header.nextElementSibling;
+            const isCollapsed = list.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                list.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                list.classList.add('collapsed');
+                header.classList.add('collapsed');
+            }
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const publications = document.querySelectorAll('.publication-item');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            publications.forEach(pub => {
+                const text = pub.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    pub.style.display = 'block';
+                } else {
+                    pub.style.display = 'none';
+                }
+            });
+
+            // Show/hide year sections based on visible publications
+            document.querySelectorAll('.publication-year').forEach(year => {
+                const visiblePubs = year.querySelectorAll('.publication-item:not([style*="display: none"])');
+                if (visiblePubs.length === 0) {
+                    year.style.display = 'none';
+                } else {
+                    year.style.display = 'block';
+                }
+            });
+        });
+
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                publications.forEach(pub => {
+                    if (filter === 'all') {
+                        pub.style.display = 'block';
+                    } else {
+                        const type = pub.dataset.type;
+                        pub.style.display = type === filter ? 'block' : 'none';
+                    }
+                });
+
+                // Show/hide year sections
+                document.querySelectorAll('.publication-year').forEach(year => {
+                    const visiblePubs = year.querySelectorAll('.publication-item:not([style*="display: none"])');
+                    if (visiblePubs.length === 0) {
+                        year.style.display = 'none';
+                    } else {
+                        year.style.display = 'block';
+                    }
+                });
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.animate-fade-in-up');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            fadeObserver.observe(el);
+        });
+    </script>
 </body>
 </html>
