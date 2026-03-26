@@ -30,19 +30,29 @@
             'home.hero.title': '量化翻译研究实验室',
             'home.hero.subtitle': '香港理工大学',
             'home.hero.description': '探索翻译的语言特征，推动跨语言研究前沿',
-            'home.about.title': '关于实验室',
-            'home.about.description': '量化翻译研究实验室致力于运用语料库方法、计算语言学和统计建模，深入探索翻译过程的本质特征。我们的研究涵盖翻译普遍性、口笔译认知加工、AI辅助翻译等多个前沿领域。',
+            'home.cta.explore': '探索我们的研究',
+            'home.about.title': '欢迎来到我们的实验室',
+            'home.about.desc1': '我们的实验室位于香港理工大学中文及双语学系和翻译中心，在采用量化和实证方法研究翻译方面处于前沿地位。我们运用人工智能等尖端技术来深化对翻译的理解和实践。',
+            'home.about.desc2': '我们热衷于探索基于语料库的方法，这使我们能够分析大量数据集并识别翻译中的新兴模式。我们的承诺延伸到翻译教学领域，我们整合最新的技术进步以提高教育成果。',
             'home.research.title': '研究方向',
-            'home.research.items': [
-                '语料库翻译研究',
-                '量化翻译学',
-                'AI与翻译技术',
-                '口译研究',
-                '翻译教学法'
-            ],
+            'home.research.ai.title': 'AI 与翻译',
+            'home.research.ai.desc': '开发和应用人工智能工具以简化和增强翻译流程。从机器翻译到智能翻译辅助工具。',
+            'home.research.corpus.title': '语料库研究',
+            'home.research.corpus.desc': '利用大量文本语料库研究翻译模式并改进方法论。大数据方法理解翻译现象。',
+            'home.research.empirical.title': '实证翻译研究',
+            'home.research.empirical.desc': '通过系统的实证方法研究翻译的有效性和策略。循证翻译研究方法。',
+            'home.research.pedagogy.title': '技术教学法',
+            'home.research.pedagogy.desc': '通过整合创新技术来增强翻译教育。为学生准备翻译的未来。',
+            'home.research.cultural.title': '跨文化交际',
+            'home.research.cultural.desc': '研究翻译语境中多语言和跨文化互动的细微差别。理解翻译中的文化维度。',
+            'home.stats.projects': '研究项目',
             'home.stats.publications': '学术论文',
-            'home.stats.books': '专著',
-            'home.stats.students': '培养学生',
+            'home.stats.team': '团队成员',
+            'home.stats.funding': '百万港币资助',
+            'home.cta.title': '加入我们的研究团队',
+            'home.cta.desc': '有兴趣与我们合作或学习吗？我们一直在寻找充满热情的研究人员和学生加入我们的团队。',
+            'home.cta.team': '认识团队',
+            'home.cta.contact': '联系我们',
 
             // People page
             'people.title': '团队成员',
@@ -82,6 +92,8 @@
             'resources.datasets': '数据集',
 
             // Footer
+            'footer.copyright': '© 2024 量化翻译研究实验室',
+            'footer.dept': '中文及双语学系 | 香港理工大学',
             'footer.address': '地址',
             'footer.contact': '联系方式',
             'footer.follow': '关注我们',
@@ -173,6 +185,7 @@
                 background: rgba(255, 255, 255, 0.1);
                 padding: 0.25rem;
                 border-radius: 0.5rem;
+                margin-left: 1rem;
             }
             .lang-btn {
                 padding: 0.375rem 0.75rem;
@@ -195,16 +208,18 @@
             @media (max-width: 768px) {
                 .language-switcher {
                     order: -1;
+                    margin-left: 0;
+                    margin-bottom: 0.5rem;
                 }
             }
         `;
         document.head.appendChild(style);
 
         // Find navigation and add switcher
-        const nav = document.querySelector('nav .nav-links');
+        const nav = document.querySelector('nav .nav-menu');
         if (nav) {
             const switcher = createLanguageSwitcher();
-            nav.parentElement.insertBefore(switcher, nav);
+            nav.parentElement.appendChild(switcher);
         }
 
         // Apply saved language
