@@ -124,11 +124,30 @@
     // Current language
     let currentLang = localStorage.getItem('lang') || 'en';
 
-    // Get translation
-    function t(key) {
-        return translations[currentLang][key] || translations['en'][key] || key;
-    }
+    // Update all translatable elements
+    function updateLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
 
+        // Update elements with data-i18n attribute
+        const key = el.getAttribute('data-i18n');
+        const translation = t(key);
+        if (translation) {
+            el.textContent = translation;
+        }
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+}
+
+}
     // Update all translatable elements
     function updateLanguage(lang) {
         currentLang = lang;
@@ -276,7 +295,7 @@
         init();
     }
 
-    // Expose globally
+    // Expose globally - 移到外部
     window.i18n = {
         t: t,
         updateLanguage: updateLanguage,
