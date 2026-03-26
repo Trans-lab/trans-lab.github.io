@@ -173,20 +173,30 @@
     function createLanguageSwitcher() {
         const switcher = document.createElement('div');
         switcher.className = 'language-switcher';
+        
+        // 显示目标语言（而不是当前语言）
+        const targetLang = currentLang === 'en' ? 'zh' : 'en';
+        const buttonText = targetLang === 'zh' ? '中文' : 'EN';
+        const buttonTitle = targetLang === 'zh' ? '切换到中文' : 'Switch to English';
+        
         switcher.innerHTML = `
-            <button class="lang-btn ${currentLang === 'en' ? 'active' : ''}" data-lang="en" title="English">
-                EN
-            </button>
-            <button class="lang-btn ${currentLang === 'zh' ? 'active' : ''}" data-lang="zh" title="中文">
-                中
+            <button class="lang-btn" data-lang="${targetLang}" title="${buttonTitle}">
+                ${buttonText}
             </button>
         `;
 
-        // Add event listeners
-        switcher.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                updateLanguage(btn.dataset.lang);
-            });
+        // Add event listener
+        const btn = switcher.querySelector('.lang-btn');
+        btn.addEventListener('click', () => {
+            const newLang = btn.dataset.lang;
+            updateLanguage(newLang);
+            // 更新按钮文本
+            const newTargetLang = newLang === 'en' ? 'zh' : 'en';
+            const newText = newTargetLang === 'zh' ? '中文' : 'EN';
+            const newTitle = newTargetLang === 'zh' ? '切换到中文' : 'Switch to English';
+            btn.textContent = newText;
+            btn.title = newTitle;
+            btn.dataset.lang = newTargetLang;
         });
 
         return switcher;
@@ -198,46 +208,59 @@
         const style = document.createElement('style');
         style.textContent = `
             .language-switcher {
+                position: absolute;
+                right: 1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
                 display: flex;
+                align-items: center;
                 gap: 0.25rem;
-                background: rgba(255, 255, 255, 0.1);
-                padding: 0.25rem;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 0.375rem 0.75rem;
                 border-radius: 0.5rem;
-                margin-left: 1rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                border: 2px solid rgba(59, 130, 246, 0.3);
+                z-index: 10;
             }
             .lang-btn {
-                padding: 0.375rem 0.75rem;
+                padding: 0.5rem 1rem;
                 border: none;
-                background: transparent;
+                background: linear-gradient(135deg, #3b82f6, #2563eb);
                 color: white;
                 font-weight: 600;
-                font-size: 0.875rem;
+                font-size: 0.9rem;
                 cursor: pointer;
                 border-radius: 0.375rem;
-                transition: all 0.2s;
+                transition: all 0.3s ease;
+                white-space: nowrap;
             }
             .lang-btn:hover {
-                background: rgba(255, 255, 255, 0.2);
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
             }
-            .lang-btn.active {
-                background: white;
-                color: var(--color-primary-700, #1e40af);
+            .lang-btn:active {
+                transform: translateY(0);
             }
             @media (max-width: 768px) {
                 .language-switcher {
+                    position: relative;
+                    right: auto;
+                    top: auto;
+                    transform: none;
                     order: -1;
-                    margin-left: 0;
                     margin-bottom: 0.5rem;
+                    margin-left: 0;
                 }
             }
         `;
         document.head.appendChild(style);
 
-        // Find navigation and add switcher
-        const nav = document.querySelector('nav .nav-menu');
-        if (nav) {
+        // Find header and add switcher to the right side
+        const header = document.querySelector('.header-inner');
+        if (header) {
             const switcher = createLanguageSwitcher();
-            nav.parentElement.appendChild(switcher);
+            header.appendChild(switcher);
         }
 
         // Apply saved language
