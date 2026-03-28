@@ -1,0 +1,374 @@
+/* Enhanced Mobile Optimizations - Trans-Lab */
+/* 移动端优化增强 - Trans-Lab */
+
+/* ============================================
+   Enhanced Mobile Navigation
+   ============================================ */
+
+/* 更大的汉堡菜单按钮 */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--space-4);
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  min-height: 48px; /* Apple推荐的最小触摸目标 */
+  min-width: 48px;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.hamburger:hover {
+  background-color: var(--color-gray-100);
+}
+
+/* 更宽的汉堡菜单线条 */
+.hamburger-line {
+  width: 28px; /* 增加到28px */
+  height: 3px;
+  background-color: var(--color-gray-700);
+  margin: 3px 0;
+  transition: all var(--transition-normal);
+  border-radius: 2px;
+}
+
+/* Active state - X shape (改进动画) */
+.menu-open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 导航菜单增强 */
+@media (max-width: 768px) {
+  /* Show hamburger menu */
+  .hamburger {
+    display: flex;
+    order: 2;
+  }
+  
+  /* Hide nav menu by default on mobile */
+  .nav-menu {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    flex-direction: column;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-3);
+    z-index: 999;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-200) transparent;
+  }
+  
+  /* Navigation menu enhanced */
+  .nav-menu.active {
+    display: flex !important;
+    animation: slideDown var(--transition-normal) ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Navigation links enhanced */
+  .nav-link {
+    padding: var(--space-5) var(--space-4);
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    min-height: 48px; /* 增加触摸目标 */
+    display: flex;
+    align-items: center;
+    font-weight: var(--font-medium);
+    color: var(--color-gray-800);
+    transition: all var(--transition-fast);
+    position: relative;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--color-gray-50);
+    color: var(--color-primary-700);
+    transform: translateX(4px);
+  }
+  
+  .nav-link.active {
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-700);
+    font-weight: var(--font-semibold);
+  }
+  
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary-500);
+    transform: scaleY(0);
+    transition: transform var(--transition-fast);
+  }
+  
+  .nav-link:hover::before,
+  .nav-link.active::before {
+    transform: scaleY(1);
+  }
+  
+  /* Language switcher mobile position */
+  .language-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+  }
+  
+  /* Header styling on mobile */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  
+  /* 汉堡菜单点击外部关闭区域 */
+  .header-nav {
+    position: relative;
+  }
+  
+  .header-nav::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 998;
+    display: none;
+  }
+  
+  .nav-menu.active ~ .header-nav::after {
+    display: block;
+  }
+}
+
+/* Extra small devices - 480px */
+@media (max-width: 480px) {
+  /* 进一步优化按钮大小 */
+  .hamburger {
+    padding: var(--space-3);
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .hamburger-line {
+    width: 24px;
+    margin: 2px 0;
+  }
+  
+  /* 增强的导航链接 */
+  .nav-link {
+    padding: var(--space-4) var(--space-3);
+    font-size: var(--text-lg);
+    min-height: 44px;
+  }
+  
+  /* 统计网格优化 */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-4);
+  }
+  
+  .stat-item {
+    min-height: 80px;
+    padding: var(--space-4);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all var(--transition-fast);
+  }
+  
+  .stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 英雄区域优化 */
+  .hero {
+    padding: var(--space-16) var(--space-4);
+  }
+  
+  .hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--text-lg);
+    line-height: var(--text-xl);
+    margin-bottom: var(--space-6);
+  }
+  
+  /* 卡片网格优化 */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+  
+  .card {
+    padding: var(--space-5);
+  }
+  
+  /* 论文列表优化 */
+  .publication-year {
+    margin-bottom: var(--space-6);
+  }
+  
+  .year-header {
+    padding: var(--space-4);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+  }
+  
+  .year-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-800);
+  }
+  
+  .year-count {
+    color: var(--color-gray-600);
+    font-size: var(--text-sm);
+  }
+  
+  .publication-item {
+    padding: var(--space-4);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-fast);
+  }
+  
+  .publication-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  .pub-number {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-600);
+    min-width: 30px;
+  }
+  
+  .pub-title {
+    font-size: var(--text-base);
+    line-height: var(--text-xl);
+    margin-bottom: var(--space-2);
+    color: var(--color-gray-800);
+  }
+  
+  .pub-authors {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-2);
+  }
+  
+  .pub-journal {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-3);
+    font-style: italic;
+  }
+  
+  .pub-actions {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-primary-50);
+    color: var(--color-primary-700);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    transition: all var(--transition-fast);
+  }
+  
+  .pub-link:hover {
+    background: var(--color-primary-100);
+    transform: translateY(-1px);
+  }
+}
+
+/* Touch-friendly form elements */
+button, input, select, textarea, a {
+  touch-action: manipulation;
+}
+
+/* Enhanced scrollbar for mobile */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
