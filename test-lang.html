@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switcher Test</title>
+    <script src="js/language-switcher.js"></script>
+</head>
+<body style="padding: 20px; font-family: Arial, sans-serif;">
+    <h1>Language Switcher Test</h1>
+    
+    <header class="header">
+        <div class="header-inner" style="position: relative; background: #1e3a8a; padding: 20px; color: white;">
+            <nav>
+                <ul class="nav-menu" style="list-style: none; display: flex; gap: 20px;">
+                    <li><a href="#" data-i18n="nav.home" style="color: white;">Home</a></li>
+                    <li><a href="#" data-i18n="nav.people" style="color: white;">People</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div style="margin-top: 20px;">
+        <h2 data-i18n="home.hero.title">Test Title</h2>
+        <p data-i18n="home.hero.subtitle">Test Subtitle</p>
+    </div>
+    
+    <script>
+        setTimeout(() => {
+            console.log('=== Language Switcher Test ===');
+            console.log('window.i18n exists:', !!window.i18n);
+            if (window.i18n) {
+                console.log('Current language:', window.i18n.currentLang());
+                console.log('Translation test (nav.home):', window.i18n.t('nav.home'));
+                console.log('Language switcher button:', document.querySelector('.lang-btn'));
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
