@@ -138,13 +138,23 @@
         .publication-list {
             display: grid;
             gap: var(--space-2);
-            overflow: hidden;
-            max-height: 5000px;
-            transition: max-height var(--transition-slow);
         }
 
         .publication-list.collapsed {
-            max-height: 0;
+            max-height: none;
+        }
+
+        .publication-year.flat-all .year-header {
+            display: none;
+        }
+
+        .publication-year.flat-all {
+            margin-bottom: var(--space-2);
+        }
+
+        .publication-section-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
         }
 
         /* Ultra Compact Publication Item */
@@ -1575,18 +1585,7 @@
 
     <script>
         function toggleYear(header) {
-            const list = header.nextElementSibling;
-            const toggle = header.querySelector('.year-toggle');
-            const collapsed = list.classList.contains('collapsed');
-            if (collapsed) {
-                list.classList.remove('collapsed');
-                header.classList.remove('collapsed');
-                if (toggle) toggle.style.transform = 'rotate(0deg)';
-            } else {
-                list.classList.add('collapsed');
-                header.classList.add('collapsed');
-                if (toggle) toggle.style.transform = 'rotate(-90deg)';
-            }
+            return;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1608,6 +1607,11 @@
                 yearBlocks().forEach(block => {
                     const visible = Array.from(block.querySelectorAll('.publication-item')).some(el => el.style.display !== 'none');
                     block.style.display = visible ? '' : 'none';
+                    block.classList.toggle('flat-all', currentFilter === 'all');
+                    const header = block.querySelector('.year-header');
+                    const list = block.querySelector('.publication-list');
+                    if (header) header.classList.remove('collapsed');
+                    if (list) list.classList.remove('collapsed');
                 });
                 document.querySelectorAll('.publication-section-title').forEach(h => {
                     const type = h.getAttribute('data-type-group');
