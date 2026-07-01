@@ -3,43 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quantitative Translation Research Lab at Hong Kong Polytechnic University - Pioneering AI and corpus-based translation research">
-    <meta name="keywords" content="translation research, AI translation, corpus linguistics, quantitative translation, Hong Kong Polytechnic University">
-    
-    <title>Quantitative Translation Research Laboratory | HKPolyU</title>
-    
-    <!-- Fonts -->
+    <meta name="description" content="Trans-Lab at The Hong Kong Polytechnic University conducts quantitative translation, corpus linguistics, and AI-enhanced language research.">
+    <meta name="keywords" content="Trans-Lab, quantitative translation, corpus linguistics, AI translation, empirical translation studies, Hong Kong Polytechnic University">
+
+    <title>Trans-Lab | Quantitative Translation Research Laboratory</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Design System CSS -->
     <link href="css/design-system.css" rel="stylesheet">
-    <!-- Enhanced Mobile Optimizations -->
     <link href="css/mobile-optimizations.css" rel="stylesheet">
 
-    <!-- Language Switcher -->
     <script src="js/language-switcher.js"></script>
-    <!-- Mobile Navigation -->
     <script src="js/mobile-nav.js"></script>
 </head>
-<body>
-    <!-- Header & Navigation -->
+<body class="lab-home">
     <header class="header" id="header">
         <div class="header-inner">
-            <a href="index.html" class="logo">
-                <i class="fas fa-language"></i>
+            <a href="index.html" class="logo" aria-label="Trans-Lab home">
+                <i class="fas fa-language" aria-hidden="true"></i>
                 <span>Trans-Lab</span>
             </a>
-            
-            <nav>
+
+            <nav aria-label="Primary navigation">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#research" class="nav-link">Research</a></li>
                     <li><a href="people.html" class="nav-link" data-i18n="nav.people">People</a></li>
-                    <li><a href="grants.html" class="nav-link" data-i18n="nav.grants">Grants</a></li>
+                    <li><a href="grants.html" class="nav-link" data-i18n="nav.grants">Projects</a></li>
                     <li><a href="publications.html" class="nav-link" data-i18n="nav.publications">Publications</a></li>
                     <li><a href="corpus-resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
                 </ul>
@@ -47,244 +39,234 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animate-fade-in-up" data-i18n="home.hero.title">
-                Quantitative Translation<br>Research Lab
-            </h1>
-            <p class="hero-subtitle animate-fade-in-up delay-200" data-i18n="home.hero.subtitle">
-                Pioneering the intersection of artificial intelligence, corpus linguistics, 
-                and empirical methods to revolutionize translation research and education.
-            </p>
-            <a href="#research" class="hero-cta animate-fade-in-up delay-400">
-                <span data-i18n="home.cta.explore">Explore Our Research</span>
-                <i class="fas fa-arrow-down"></i>
-            </a>
-        </div>
-    </section>
+    <main>
+        <section class="lab-hero">
+            <div class="lab-hero-media" aria-hidden="true"></div>
+            <div class="lab-hero-overlay"></div>
+            <div class="lab-hero-inner">
+                <div class="lab-hero-copy">
+                    <p class="eyebrow">The Hong Kong Polytechnic University</p>
+                    <h1>Trans-Lab</h1>
+                    <p class="hero-kicker">Quantitative Translation Research Laboratory</p>
+                    <p class="hero-lead">
+                        We study translation, interpreting, language education, and cross-linguistic communication through corpus evidence, quantitative methods, and human-centered artificial intelligence.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#research">
+                            <i class="fas fa-compass" aria-hidden="true"></i>
+                            Explore Research
+                        </a>
+                        <a class="btn btn-secondary" href="people.html">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            Meet the Team
+                        </a>
+                    </div>
+                </div>
 
-    <!-- Stats Section -->
-    <section class="stats-grid">
-        <div class="stat-item animate-fade-in-up">
-            <div class="stat-number" data-target="15">0</div>
-            <div class="stat-label" data-i18n="home.stats.projects">Research Projects</div>
-        </div>
-        <div class="stat-item animate-fade-in-up delay-100">
-            <div class="stat-number" data-target="50">0</div>
-            <div class="stat-label" data-i18n="home.stats.publications">Publications</div>
-        </div>
-        <div class="stat-item animate-fade-in-up delay-200">
-            <div class="stat-number" data-target="8">0</div>
-            <div class="stat-label" data-i18n="home.stats.team">Team Members</div>
-        </div>
-        <div class="stat-item animate-fade-in-up delay-300">
-            <div class="stat-number" data-target="5">0</div>
-            <div class="stat-label" data-i18n="home.stats.funding">Million HKD Funding</div>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="container-wrapper">
-        
-        <!-- Introduction -->
-        <section class="content" id="about">
-            <h2 data-i18n="home.about.title">Welcome to Our Lab</h2>
-            <p style="font-size: var(--text-lg); color: var(--color-gray-700); margin-bottom: var(--space-6);" data-i18n="home.about.desc1">
-                Nestled within the <strong>Department of Chinese and Bilingual Studies</strong> and the 
-                <strong>Centre of Translation</strong> at The Hong Kong Polytechnic University, our lab is at 
-                the forefront of adopting quantitative and empirical approaches to translation. We employ 
-                cutting-edge technologies like artificial intelligence to deepen our understanding and 
-                practice of translation.
-            </p>
-            <p style="font-size: var(--text-lg); color: var(--color-gray-700);" data-i18n="home.about.desc2">
-                We are passionate about exploring <strong>corpus-based methodologies</strong>, which allow 
-                us to analyze large datasets and identify emerging patterns in translation. Our commitment 
-                extends into the realm of translation teaching, where we integrate the latest technological 
-                advances to enhance educational outcomes.
-            </p>
+                <aside class="lab-hero-panel" aria-label="Lab summary">
+                    <div class="panel-label">Lab Director</div>
+                    <div class="director-row">
+                        <img src="image/kanglong.jpg" alt="Prof. Kanglong Liu" class="director-photo">
+                        <div>
+                            <h2>Prof. Kanglong Liu</h2>
+                            <p>Associate Professor, Department of Language Science and Technology</p>
+                            <p>Assistant Dean (Technology and Humanities Education), Faculty of Humanities</p>
+                        </div>
+                    </div>
+                    <div class="panel-links">
+                        <a href="mailto:kl.liu@polyu.edu.hk"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+                        <a href="https://www.polyu.edu.hk/lst/people/academic-staff/liu-kanglong/" target="_blank" rel="noopener"><i class="fas fa-building-columns" aria-hidden="true"></i> PolyU Profile</a>
+                        <a href="https://orcid.org/0000-0003-3962-2563" target="_blank" rel="noopener"><i class="fas fa-id-badge" aria-hidden="true"></i> ORCID</a>
+                    </div>
+                </aside>
+            </div>
         </section>
 
-        <!-- Research Focus -->
-        <section class="content" id="research">
-            <h2 style="text-align: center; margin-bottom: var(--space-8);" data-i18n="home.research.title">Our Research Focus</h2>
-            
-            <div class="card-grid">
-                <!-- AI in Translation -->
-                <div class="card animate-fade-in-up">
-                    <div class="card-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="card-title" data-i18n="home.research.ai.title">AI in Translation</h3>
-                    <p class="card-text" data-i18n="home.research.ai.desc">
-                        Developing and applying artificial intelligence tools to streamline and enhance 
-                        translation processes. From machine translation to intelligent translation aids.
+        <section class="lab-stats" aria-label="Trans-Lab at a glance">
+            <div class="stat-item">
+                <div class="stat-number">90+</div>
+                <div class="stat-label">Research outputs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Funded projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Research pillars</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Public platforms</div>
+            </div>
+        </section>
+
+        <section class="lab-section intro-section" id="about">
+            <div class="section-heading">
+                <p class="eyebrow">About the lab</p>
+                <h2>Evidence-driven translation and language research</h2>
+            </div>
+            <div class="intro-grid">
+                <div>
+                    <p>
+                        Trans-Lab is a research group at PolyU dedicated to empirical translation studies, corpus-based language research, and AI-enhanced translation education. The lab brings together faculty, doctoral researchers, collaborators, and digital resources for studying how translation works across texts, domains, modalities, and learning environments.
+                    </p>
+                    <p>
+                        Our work combines linguistic theory, corpus methods, computational analysis, and pedagogy. We build research corpora, examine translation and interpreting phenomena, and design AI-supported tools that help researchers, teachers, students, and language professionals work with evidence.
                     </p>
                 </div>
-
-                <!-- Corpus-Based Studies -->
-                <div class="card animate-fade-in-up delay-100">
-                    <div class="card-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="card-title" data-i18n="home.research.corpus.title">Corpus-Based Studies</h3>
-                    <p class="card-text" data-i18n="home.research.corpus.desc">
-                        Utilizing extensive text corpora to study translation patterns and improve 
-                        methodologies. Big data approaches to understanding translation phenomena.
-                    </p>
-                </div>
-
-                <!-- Empirical Translation Research -->
-                <div class="card animate-fade-in-up delay-200">
-                    <div class="card-icon">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <h3 class="card-title" data-i18n="home.research.empirical.title">Empirical Translation Research</h3>
-                    <p class="card-text" data-i18n="home.research.empirical.desc">
-                        Investigating the effectiveness and strategies of translation through systematic 
-                        empirical methods. Evidence-based approaches to translation studies.
-                    </p>
-                </div>
-
-                <!-- Technological Pedagogy -->
-                <div class="card animate-fade-in-up delay-300">
-                    <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="card-title" data-i18n="home.research.pedagogy.title">Technological Pedagogy</h3>
-                    <p class="card-text" data-i18n="home.research.pedagogy.desc">
-                        Enhancing translation education through the integration of innovative technologies. 
-                        Preparing students for the future of translation.
-                    </p>
-                </div>
-
-                <!-- Cross-Cultural Communication -->
-                <div class="card animate-fade-in-up delay-400">
-                    <div class="card-icon">
-                        <i class="fas fa-globe-asia"></i>
-                    </div>
-                    <h3 class="card-title" data-i18n="home.research.cultural.title">Cross-Cultural Communication</h3>
-                    <p class="card-text" data-i18n="home.research.cultural.desc">
-                        Examining the nuances of multilingual and cross-cultural interactions within 
-                        translation contexts. Understanding cultural dimensions in translation.
-                    </p>
+                <div class="intro-note">
+                    <h3>Research environment</h3>
+                    <p>Department of Language Science and Technology<br>Faculty of Humanities<br>The Hong Kong Polytechnic University</p>
+                    <a href="people.html" class="text-link">View lab members <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="content" style="text-align: center; background: linear-gradient(135deg, var(--color-primary-800), var(--color-primary-600)); color: white;">
-            <h2 style="color: white; margin-bottom: var(--space-4);" data-i18n="home.cta.title">Join Our Research Community</h2>
-            <p style="font-size: var(--text-lg); opacity: 0.95; margin-bottom: var(--space-6); color: white;" data-i18n="home.cta.desc">
-                Interested in collaborating or studying with us? We're always looking for passionate 
-                researchers and students to join our team.
-            </p>
-            <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                <a href="people.html" class="btn btn-primary" style="background: white; color: var(--color-primary-700);">
-                    <i class="fas fa-users"></i>
-                    <span data-i18n="home.cta.team">Meet Our Team</span>
+        <section class="lab-section research-section" id="research">
+            <div class="section-heading">
+                <p class="eyebrow">Research pillars</p>
+                <h2>Focused areas with shared methods</h2>
+            </div>
+            <div class="research-grid">
+                <article class="research-card">
+                    <span class="card-index">01</span>
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <h3>Corpus-Based Translation Studies</h3>
+                    <p>Building and analyzing multilingual corpora to identify translation patterns, style, discourse features, and mediation effects across genres.</p>
+                </article>
+                <article class="research-card">
+                    <span class="card-index">02</span>
+                    <i class="fas fa-microchip" aria-hidden="true"></i>
+                    <h3>AI and Translation Education</h3>
+                    <p>Designing AI-supported learning environments, feedback systems, and corpus platforms for translator training and academic writing.</p>
+                </article>
+                <article class="research-card">
+                    <span class="card-index">03</span>
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    <h3>Quantitative and Empirical Methods</h3>
+                    <p>Using computational linguistics, quantitative metrics, and experimental evidence to examine translation, interpreting, readability, and complexity.</p>
+                </article>
+                <article class="research-card">
+                    <span class="card-index">04</span>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    <h3>Literary and Cultural Translation</h3>
+                    <p>Studying literary translation, especially Hongloumeng translation, through stylistic, corpus-assisted, and cross-cultural perspectives.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab-section projects-section">
+            <div class="section-heading">
+                <p class="eyebrow">Current and recent work</p>
+                <h2>Projects that connect research, teaching, and tools</h2>
+            </div>
+            <div class="project-timeline">
+                <article>
+                    <span>2025-2027</span>
+                    <h3>GenAI-integrated corpus platform</h3>
+                    <p>A platform for corpus-assisted language and translation learning with generative AI support.</p>
+                </article>
+                <article>
+                    <span>2024-2025</span>
+                    <h3>Modality in common law judicial discourse</h3>
+                    <p>Quantitative investigation of modality across legal discourse and translation contexts.</p>
+                </article>
+                <article>
+                    <span>2020-2023</span>
+                    <h3>Translation or mediation universals</h3>
+                    <p>Corpus-based research on mediation effects and translational patterns across language pairs.</p>
+                </article>
+            </div>
+            <a href="grants.html" class="text-link">View funded projects <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </section>
+
+        <section class="lab-section publications-preview" id="publications">
+            <div class="section-heading">
+                <p class="eyebrow">Selected outputs</p>
+                <h2>Recent publications and books</h2>
+            </div>
+            <div class="publication-preview-grid">
+                <article class="publication-preview">
+                    <div class="pub-year">2026</div>
+                    <h3>Exploring semantic distinctions and syntagmatic patterning in lexical simplification and complexification</h3>
+                    <p>Journal of Quantitative Linguistics</p>
+                </article>
+                <article class="publication-preview">
+                    <div class="pub-year">2025</div>
+                    <h3>Translation Studies in the Age of Artificial Intelligence</h3>
+                    <p>Routledge edited volume</p>
+                </article>
+                <article class="publication-preview">
+                    <div class="pub-year">2024</div>
+                    <h3>Corpus-based approaches to translation, interpreting, readability, and language education</h3>
+                    <p>Recent journal and digital humanities research</p>
+                </article>
+            </div>
+            <a href="publications.html" class="text-link">Browse full publication archive <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </section>
+
+        <section class="lab-section resources-section">
+            <div class="section-heading">
+                <p class="eyebrow">Resources</p>
+                <h2>Platforms, corpora, and teaching materials</h2>
+            </div>
+            <div class="resource-grid">
+                <a href="corpus-resources.html#corpus-resources" class="resource-card">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                    <h3>Corpus Resources</h3>
+                    <p>Curated corpora and datasets for translation and language research.</p>
                 </a>
-                <a href="mailto:kl.liu@polyu.edu.hk" class="btn btn-secondary" style="background: transparent; border: 2px solid white; color: #2563eb;">
-                    <i class="fas fa-envelope"></i>
-                    <span data-i18n="home.cta.contact">Contact Us</span>
+                <a href="AI_Corpora/home.html" class="resource-card">
+                    <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <h3>AI Corpus Tools</h3>
+                    <p>Prototype tools for corpus-assisted language learning and translation tasks.</p>
+                </a>
+                <a href="publications.html" class="resource-card">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <h3>Publication PDFs</h3>
+                    <p>Open-access papers, book chapters, and research outputs maintained by the lab.</p>
                 </a>
             </div>
         </section>
 
+        <section class="lab-section join-section">
+            <div>
+                <p class="eyebrow">Collaboration</p>
+                <h2>Work with Trans-Lab</h2>
+                <p>We welcome conversations with researchers, students, teachers, and industry partners interested in empirical translation studies, AI-supported language education, and corpus-based methods.</p>
+            </div>
+            <div class="join-actions">
+                <a class="btn btn-primary" href="mailto:kl.liu@polyu.edu.hk">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    Contact the Lab
+                </a>
+                <a class="btn btn-secondary" href="people.html">
+                    <i class="fas fa-user-graduate" aria-hidden="true"></i>
+                    Research Team
+                </a>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p data-i18n="footer.copyright">© 2024 Quantitative Translation Research Laboratory</p>
-            <p style="margin-top: var(--space-2); color: var(--color-gray-400);" data-i18n="footer.dept">
-                Department of Chinese and Bilingual Studies | The Hong Kong Polytechnic University
+            <p>© 2026 Quantitative Translation Research Laboratory | Trans-Lab</p>
+            <p style="margin-top: var(--space-2); color: var(--color-gray-400);">
+                Department of Language Science and Technology | Faculty of Humanities | The Hong Kong Polytechnic University
             </p>
             <p style="margin-top: var(--space-4);">
                 <a href="mailto:kl.liu@polyu.edu.hk">
-                    <i class="fas fa-envelope"></i> kl.liu@polyu.edu.hk
+                    <i class="fas fa-envelope" aria-hidden="true"></i> kl.liu@polyu.edu.hk
                 </a>
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Sticky Header Effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Animated Counter
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target + '+';
-                }
-            });
-        };
-
-        // Intersection Observer for Counter Animation
-        const statsSection = document.querySelector('.stats-grid');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        if (statsSection) {
-            observer.observe(statsSection);
-        }
-
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade In Animation on Scroll
-        const fadeElements = document.querySelectorAll('.animate-fade-in-up');
-        
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        fadeElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            fadeObserver.observe(el);
+            header.classList.toggle('scrolled', window.scrollY > 24);
         });
     </script>
 </body>

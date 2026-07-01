@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.setAttribute('aria-label', 'Toggle navigation menu');
         hamburger.setAttribute('aria-expanded', 'false');
         
-        // Insert hamburger menu before nav
-        if (headerInner) {
-            headerInner.insertBefore(hamburger, navMenu);
+        // Insert hamburger beside the nav container in the header.
+        if (headerInner && navMenu) {
+            const nav = navMenu.closest('nav');
+            headerInner.insertBefore(hamburger, nav || navMenu);
         }
         
         // Toggle menu on hamburger click
