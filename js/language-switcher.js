@@ -7,6 +7,48 @@
     // Language data
     const translations = {
         zh: {
+            "nav.research": "研究方向",
+            "swiss.footer": "量化翻译研究实验室 · 香港理工大学",
+            "swiss.top": "返回顶部 ↑",
+            "swiss.searchlabel": "检索学术成果",
+            "swiss.year": "年份",
+            "swiss.allyears": "全部年份",
+            "swiss.alltypes": "全部类型",
+            "swiss.books": "书籍",
+            "swiss.chapters": "书章",
+            "swiss.pdfonly": "有 PDF 全文",
+            "swiss.reset": "重置筛选 ↗",
+            "swiss.noresults": "没有匹配结果。请尝试其他关键词或重置筛选。",
+            "swiss.outputs": "成果记录",
+            "swiss.pubintro": "翻译、口译、语言学习与量化语言学研究。按年份、类型或主题检索。",
+            "swiss.identity": "刘康龙 / KANGLONG LIU",
+            "swiss.translation": "翻译。",
+            "swiss.language": "语言。",
+            "swiss.evidence": "证据。",
+            "swiss.herodesc": "结合语料库证据、量化方法与以人为本的人工智能，研究翻译和语言。",
+            "swiss.explore": "浏览学术发表 ↗",
+            "swiss.labname": "量化翻译研究实验室",
+            "swiss.scroll": "了解实验室 ↓",
+            "swiss.researchpractice": "研究与实践",
+            "swiss.role": "副教授 · 实验室主任",
+            "swiss.profile": "我的研究结合翻译学、语料库语言学与语言教育。在 Trans-Lab，我们以实证材料探索语言问题，并开发研究与学习工具。",
+            "swiss.position": "香港理工大学语言科学及技术学系；人文学院助理院长（科技及人文教育）。",
+            "swiss.meetteam": "认识研究团队 ↗",
+            "swiss.questions": "探索跨语言问题。",
+            "swiss.methods": "共享方法，多元视角：从文学文本到 AI 辅助学习。",
+            "swiss.selected": "精选成果",
+            "swiss.recent": "近期研究。",
+            "swiss.archive": "浏览全部成果 ↗",
+            "swiss.openresearch": "研究与学习工具",
+            "swiss.corpora": "语料库与资源",
+            "swiss.corporadesc": "探索语言数据与计算工具。",
+            "swiss.aitools": "AI 语料库平台",
+            "swiss.aitoolsdesc": "将语料库证据与 AI 辅助学习相结合。",
+            "swiss.projects": "研究项目",
+            "swiss.projectsdesc": "了解获资助项目及其发展。",
+            "swiss.contact": "交流研究想法。",
+            "swiss.contactdesc": "欢迎就翻译、语言和教育开展研究合作与交流。",
+
             // Navigation
             'nav.home': '首页',
             'nav.people': '团队成员',
@@ -117,6 +159,48 @@
             'footer.follow': '关注我们',
         },
         en: {
+            "nav.research": "Research",
+            "swiss.footer": "Quantitative Translation Research Laboratory · The Hong Kong Polytechnic University",
+            "swiss.top": "Back to top ↑",
+            "swiss.searchlabel": "Search the archive",
+            "swiss.year": "Year",
+            "swiss.allyears": "All years",
+            "swiss.alltypes": "All types",
+            "swiss.books": "Books",
+            "swiss.chapters": "Chapters",
+            "swiss.pdfonly": "PDF available",
+            "swiss.reset": "Reset filters ↗",
+            "swiss.noresults": "No matching results. Try another keyword or reset the filters.",
+            "swiss.outputs": "Listed outputs",
+            "swiss.pubintro": "Research in translation, interpreting, language learning and quantitative linguistics. Browse by year, type or topic.",
+            "swiss.identity": "KANGLONG LIU / 刘康龙",
+            "swiss.translation": "Translation.",
+            "swiss.language": "Language.",
+            "swiss.evidence": "Evidence.",
+            "swiss.herodesc": "Studying translation and language through corpus evidence, quantitative methods and human-centred artificial intelligence.",
+            "swiss.explore": "Explore publications ↗",
+            "swiss.labname": "Quantitative Translation Research Laboratory",
+            "swiss.scroll": "Discover the lab ↓",
+            "swiss.researchpractice": "Research & practice",
+            "swiss.role": "Associate Professor · Lab Director",
+            "swiss.profile": "I work at the intersection of translation studies, corpus linguistics and language education. At Trans-Lab, we connect linguistic questions with empirical evidence and develop tools for research and learning.",
+            "swiss.position": "Department of Language Science and Technology, The Hong Kong Polytechnic University. Assistant Dean (Technology and Humanities Education), Faculty of Humanities.",
+            "swiss.meetteam": "Meet the team ↗",
+            "swiss.questions": "Questions across languages.",
+            "swiss.methods": "Shared methods. Different perspectives. From literary texts to AI-supported learning.",
+            "swiss.selected": "Selected work",
+            "swiss.recent": "Recent research.",
+            "swiss.archive": "View the full archive ↗",
+            "swiss.openresearch": "Tools for research & learning",
+            "swiss.corpora": "Corpora & resources",
+            "swiss.corporadesc": "Explore language data and computational tools.",
+            "swiss.aitools": "AI corpus platform",
+            "swiss.aitoolsdesc": "Connect corpus evidence with AI-assisted learning.",
+            "swiss.projects": "Research projects",
+            "swiss.projectsdesc": "View funded research and its development.",
+            "swiss.contact": "Let's exchange ideas.",
+            "swiss.contactdesc": "For research collaboration and conversations about translation, language and education.",
+
             // Navigation
             'nav.home': 'Home',
             'nav.people': 'People',
@@ -229,7 +313,8 @@
     };
 
     // Current language
-    let currentLang = localStorage.getItem('lang') || 'en';
+    let currentLang = 'en';
+    try { currentLang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en'; } catch (_) {}
 
     // Get translation
     function t(key) {
@@ -239,7 +324,7 @@
     // Update all translatable elements
     function updateLanguage(lang) {
         currentLang = lang;
-        localStorage.setItem('lang', lang);
+        try { localStorage.setItem('lang', lang); } catch (_) {}
 
         // Update elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -258,6 +343,8 @@
                 el.placeholder = translation;
             }
         });
+
+        document.dispatchEvent(new CustomEvent('languagechange', {detail: lang}));
 
         // Update HTML lang attribute
         document.documentElement.lang = lang;
@@ -311,57 +398,7 @@
 
     // Initialize
     function init() {
-        // Add styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .language-switcher {
-                position: absolute;
-                right: 1.5rem;
-                top: 50%;
-                transform: translateY(-50%);
-                display: flex;
-                align-items: center;
-                gap: 0.25rem;
-                background: rgba(255, 255, 255, 0.95);
-                padding: 0.375rem 0.75rem;
-                border-radius: 0.5rem;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-                border: 2px solid rgba(59, 130, 246, 0.3);
-                z-index: 10;
-            }
-            .lang-btn {
-                padding: 0.5rem 1rem;
-                border: none;
-                background: linear-gradient(135deg, #3b82f6, #2563eb);
-                color: white;
-                font-weight: 600;
-                font-size: 0.9rem;
-                cursor: pointer;
-                border-radius: 0.375rem;
-                transition: all 0.3s ease;
-                white-space: nowrap;
-            }
-            .lang-btn:hover {
-                background: linear-gradient(135deg, #2563eb, #1d4ed8);
-                transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-            }
-            .lang-btn:active {
-                transform: translateY(0);
-            }
-            @media (max-width: 768px) {
-                .language-switcher {
-                    position: relative;
-                    right: auto;
-                    top: auto;
-                    transform: none;
-                    order: -1;
-                    margin-bottom: 0.5rem;
-                    margin-left: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+
 
         // Find header and add switcher to the right side
         const header = document.querySelector('.header-inner');
