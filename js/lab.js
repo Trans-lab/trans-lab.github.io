@@ -43,6 +43,8 @@ window.TRANSLATIONS = {
     "type.journal.pl": "Journal articles", "type.book.pl": "Books", "type.chapter.pl": "Book chapters", "type.conference.pl": "Conference papers", "type.review.pl": "Book reviews",
     "pubs.title": "Publications",
     "pubs.intro": "Publications by Kanglong Liu and collaborators, with PDFs available where possible.",
+    "pubs.cite": "Citation", "pubs.cite.title": "Cite this publication", "pubs.cite.copy": "Copy",
+    "pubs.cite.copied": "Copied", "pubs.cite.close": "Close", "pubs.cite.style": "Citation style",
     "pubs.search.label": "Search", "pubs.search.placeholder": "Search title, author or keyword",
     "pubs.type.label": "Type", "pubs.year.label": "Year", "pubs.allyears": "All years",
     "pubs.pdfonly": "PDF available", "pubs.reset": "Reset", "pubs.alltypes": "All types",
@@ -102,6 +104,8 @@ window.TRANSLATIONS = {
     "type.journal.pl": "期刊论文", "type.book.pl": "专著", "type.chapter.pl": "书章", "type.conference.pl": "会议论文", "type.review.pl": "书评",
     "pubs.title": "学术发表",
     "pubs.intro": "刘康龙及合作者的学术成果，附可获取的 PDF 全文。",
+    "pubs.cite": "引用", "pubs.cite.title": "引用本文", "pubs.cite.copy": "复制",
+    "pubs.cite.copied": "已复制", "pubs.cite.close": "关闭", "pubs.cite.style": "引用格式",
     "pubs.search.label": "检索", "pubs.search.placeholder": "搜索标题、作者或关键词",
     "pubs.type.label": "类型", "pubs.year.label": "年份", "pubs.allyears": "全部年份",
     "pubs.pdfonly": "有 PDF 全文", "pubs.reset": "重置", "pubs.alltypes": "全部类型",
@@ -287,6 +291,72 @@ window.TRANSLATIONS = {
       resSearch.addEventListener('input', rrun);
       document.addEventListener('langchange', rrun);
       rrun();
+    }
+
+    /* citation dialog */
+    var citeDlg = document.getElementById('citeDialog');
+    if (citeDlg) {
+      var citeText = document.getElementById('citeText');
+      var citeBtns = Array.prototype.slice.call(citeDlg.querySelectorAll('[data-cite-style]'));
+      var citeCopy = document.getElementById('citeCopy');
+      var citeCurrent = null, citeStyle = 'apa', copyTimer = null;
+      var renderCite = function () {
+        if (citeCurrent) citeText.textContent = citeCurrent.getAttribute('data-cite-' + citeStyle) || '';
+      };
+      var setCopyLabel = function (k) {
+        if (citeCopy) citeCopy.textContent = t(k) || citeCopy.textContent;
+      };
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest ? e.target.closest('.cite-btn') : null;
+        if (!b) return;
+        citeCurrent = b;
+        citeStyle = 'apa';
+        citeBtns.forEach(function (x) {
+          var on = x.getAttribute('data-cite-style') === 'apa';
+          x.setAttribute('aria-pressed', String(on));
+          x.classList.toggle('active', on);
+        });
+        renderCite();
+        setCopyLabel('pubs.cite.copy');
+        if (!citeDlg.open) citeDlg.showModal();
+      });
+      citeBtns.forEach(function (x) {
+        x.addEventListener('click', function () {
+          citeStyle = x.getAttribute('data-cite-style');
+          citeBtns.forEach(function (y) {
+            y.setAttribute('aria-pressed', String(y === x));
+            y.classList.toggle('active', y === x);
+          });
+          renderCite();
+          setCopyLabel('pubs.cite.copy');
+        });
+      });
+      if (citeCopy) citeCopy.addEventListener('click', function () {
+        var txt = citeText.textContent || '';
+        var done = function () {
+          citeCopy.textContent = t('pubs.cite.copied') || 'Copied';
+          clearTimeout(copyTimer);
+          copyTimer = setTimeout(function () { setCopyLabel('pubs.cite.copy'); }, 1600);
+        };
+        var fallback = function () {
+          var ta = document.createElement('textarea');
+          ta.value = txt;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (err) {}
+          document.body.removeChild(ta);
+          done();
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done, fallback);
+        } else { fallback(); }
+      });
+      var citeClose = document.getElementById('citeClose');
+      if (citeClose) citeClose.addEventListener('click', function () { citeDlg.close(); });
+      citeDlg.addEventListener('click', function (e) { if (e.target === citeDlg) citeDlg.close(); });
+      document.addEventListener('langchange', function () { setCopyLabel('pubs.cite.copy'); });
     }
 
     applyLanguage();
